@@ -1,9 +1,13 @@
+{{#data-portlets.data-views}}
 <div class="header-button-wrapper--edit">
-    {{#data-portlets.data-views}}
-        <ul>
-            {{#array-items}}
-                <li id="{{id}}" class="{{class}}">{{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}</li>
-            {{/array-items}}
-        </ul>
-    {{/data-portlets.data-views}}
+    <ul>
+        {{#array-items}}
+            <li id="{{id}}" class="{{class}}">
+                {{#array-links}}
+                    <a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>
+                {{/array-links}}
+            </li>
+        {{/array-items}}
+    </ul>
 </div>
+{{/data-portlets.data-views}}
