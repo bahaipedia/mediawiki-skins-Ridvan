@@ -1,0 +1,8 @@
+{{! This template isolates the 'Talk' button, but only if the talk page already exists (is not a 'new' red link). }}
+{{#data-portlets.data-views.array-items}}
+    {{#is-ca-talk}}
+        {{^is-new}}
+            <a class="header-button header-button--talk" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>
+        {{/is-new}}
+    {{/is-ca-talk}}
+{{/data-portlets.data-views.array-items}}
