@@ -1,0 +1,25 @@
+<div role="navigation" id="p-hybrid-actions" class="mw-portlet" aria-labelledby="p-hybrid-actions-label">
+    <h3 id="p-hybrid-actions-label">More</h3>
+    <div class="mw-portlet-body">
+        <ul>
+            {{! 1. Render remaining items from data-views. }}
+            {{#data-portlets.data-views.array-items}}
+                {{! Exclude the Edit button, which is handled separately. }}
+                {{^is-ca-edit}}
+                    {{! For the Talk button, only include it here if it's for a 'new' page. }}
+                    {{#is-ca-talk}}
+                        {{#is-new}}{{>ListItem}}{{/is-new}}
+                    {{/is-ca-talk}}
+
+                    {{! Render all other view items (e.g., View History) that are not Talk. }}
+                    {{^is-ca-talk}}{{>ListItem}}{{/is-ca-talk}}
+                {{/is-ca-edit}}
+            {{/data-portlets.data-views.array-items}}
+
+            {{! 2. Render all items from data-actions. }}
+            {{#data-portlets.data-actions.array-items}}
+                {{>ListItem}}
+            {{/data-portlets.data-actions.array-items}}
+        </ul>
+    </div>
+</div>
