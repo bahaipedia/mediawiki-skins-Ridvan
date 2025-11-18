@@ -2,26 +2,14 @@
     <h3 id="p-hybrid-actions-label">More</h3>
     <div class="mw-portlet-body">
         <ul>
-            {{! 1. Render remaining items from data-views. }}
+            {{! 1. Render data-views. The CSS will hide what is not needed. }}
             {{#data-portlets.data-views.array-items}}
-                {{! Check flags on the list item itself to filter. }}
-                {{^is-ca-edit}}
-                    {{#is-ca-talk}}
-                        {{#is-new}}
-                            <li id="{{id}}" class="{{class}}">{{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}</li>
-                        {{/is-new}}
-                    {{/is-ca-talk}}
-                    {{^is-ca-talk}}
-                        <li id="{{id}}" class="{{class}}">{{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}</li>
-                    {{/is-ca-talk}}
-                {{/is-ca-edit}}
+                 <li id="{{id}}" class="{{class}}">{{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}</li>
             {{/data-portlets.data-views.array-items}}
 
             {{! 2. Render all items from data-actions. }}
             {{#data-portlets.data-actions.array-items}}
-                <li id="{{id}}" class="{{class}}">
-                    {{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}
-                </li>
+                <li id="{{id}}" class="{{class}}">{{#array-links}}<a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>{{/array-links}}</li>
             {{/data-portlets.data-actions.array-items}}
         </ul>
     </div>
