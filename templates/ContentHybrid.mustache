@@ -1,11 +1,17 @@
-<ul class="ridvan-hybrid-menu">
-    {{#ridvan-content-hybrid}}
-        <li id="{{id}}" class="{{class}}">
-            {{#array-links}}
-                <a {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>
-                    {{text}}
-                </a>
-            {{/array-links}}
-        </li>
-    {{/ridvan-content-hybrid}}
-</ul>
+<div class="mw-portlet" id="p-hybrid">
+    <input type="checkbox" id="cb-hybrid" class="mw-checkbox-hack-checkbox">
+    <label for="cb-hybrid" class="mw-checkbox-hack-button" aria-label="More Options">More ▾</label>
+    <div class="mw-portlet-body">
+        <ul>
+            {{#ridvan-content-hybrid}}
+                <li id="{{id}}" class="{{class}}">
+                    {{#array-links}}
+                        <a href="{{href}}" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>
+                            {{text}}
+                        </a>
+                    {{/array-links}}
+                </li>
+            {{/ridvan-content-hybrid}}
+        </ul>
+    </div>
+</div>
