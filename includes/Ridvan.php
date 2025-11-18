@@ -16,25 +16,34 @@ class SkinRidvan extends SkinMustache {
         $talkButton = null;
         $hybridMenu = [];
 
-        // 3. Sort items
-        foreach ( $allPortlets as $key => $item ) {
-            // Handle Edit (or View Source if locked)
-            if ( $key === 'ca-edit' || $key === 'ca-viewsource' ) {
+        // 3. Sort items by checking the 'id' property inside the item
+        foreach ( $allPortlets as $item ) {
+            // Get the ID safely
+            $id = $item['id'] ?? '';
+
+            // --- LOGIC START ---
+            
+            // 1. Find the Edit Button (or View Source)
+            if ( $id === 'ca-edit' || $id === 'ca-viewsource' ) {
                 $editButton = $item;
             } 
-            // Handle Talk
-            elseif ( $key === 'ca-talk' ) {
+            // 2. Find the Talk Button
+            elseif ( $id === 'ca-talk' ) {
                 $talkButton = $item;
-            } 
-            // Handle everything else (History, Move, Delete, Read, etc.)
+            }
+            // 3. Everything else goes to Hybrid
             else {
                 $hybridMenu[] = $item;
             }
         }
 
         // 4. Pass distinct data to Mustache
-        $data['ridvan-content-edit'] = $editButton;
-        $data['ridvan-content-talk'] = $talkButton;
+        // Note: We use 'ridvan-content-edit' keys in the mustache files
+        $data['ridvan-content-edit'] = $editButton ? [ $editButton ] : []; 
+        // ^ We wrap in array [] because mustache expects a list or true/false
+        
+        $data['ridvan-content-talk'] = $talkButton ? [ $talkButton ] : [];
+        
         $data['ridvan-content-hybrid'] = $hybridMenu;
 
         return $data;
