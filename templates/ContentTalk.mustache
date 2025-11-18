@@ -1,11 +1,9 @@
 {{#ridvan-content-talk}}
 <div id="{{id}}" class="mw-portlet ridvan-talk-button">
     <div class="mw-portlet-body">
-        {{#array-links}}
-            <a href="{{href}}" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}} title="{{text}}">
-                {{text}}
-            </a>
-        {{/array-links}}
+        <a href="{{href}}" title="{{text}}" class="ridvan-talk-link">
+            {{text}}
+        </a>
     </div>
 </div>
 {{/ridvan-content-talk}}
