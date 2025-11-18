@@ -1,0 +1,6 @@
+{{! This template isolates the 'Edit' button from the data-views array. }}
+{{#data-portlets.data-views.array-items}}
+    {{#is-ca-edit}}
+        <a class="header-button header-button--edit" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>{{text}}</a>
+    {{/is-ca-edit}}
+{{/data-portlets.data-views.array-items}}
