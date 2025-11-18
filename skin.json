@@ -11,9 +11,12 @@
 	"requires": {
 		"MediaWiki": ">= 1.41.0"
 	},
+	"AutoloadClasses": {
+		"SkinRidvan": "includes/Ridvan.php"
+	},
 	"ValidSkinNames": {
 		"ridvan": {
-			"class": "SkinMustache",
+			"class": "SkinRidvan",
 			"args": [
 				{
 					"name": "ridvan",
