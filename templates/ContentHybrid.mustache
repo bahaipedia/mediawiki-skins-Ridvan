@@ -5,11 +5,19 @@
         <ul>
             {{#ridvan-content-hybrid}}
                 <li id="{{id}}" class="{{class}}">
-                    {{#array-links}}
+                    {{#href}}
                         <a href="{{href}}" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>
                             {{text}}
                         </a>
-                    {{/array-links}}
+                    {{/href}}
+
+                    {{^href}}
+                        {{#array-links}}
+                             <a href="{{href}}" {{#array-attributes}}{{key}}="{{value}}"{{/array-attributes}}>
+                                {{text}}
+                             </a>
+                        {{/array-links}}
+                    {{/href}}
                 </li>
             {{/ridvan-content-hybrid}}
         </ul>
