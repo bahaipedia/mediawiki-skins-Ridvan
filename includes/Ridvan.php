@@ -24,7 +24,7 @@ class SkinRidvan extends SkinMustache {
             // --- LOGIC START ---
             
             // 1. Find the Edit Button (or View Source)
-            if ( $id === 'ca-edit' || $id === 'ca-viewsource' || $id === 'ca-view' || $id === 'ca-nstab-main' ) {
+            if ( $id === 'ca-edit' || $id === 'ca-viewsource' ) {
                 $editButton = $item;
             } 
             // 2. Find the Talk Button
