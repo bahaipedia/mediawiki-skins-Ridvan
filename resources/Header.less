@@ -16,48 +16,56 @@
 	}
 }
 
-// Style the wrappers to behave like single buttons and align with other header items.
-.header-button-wrapper--edit,
-.header-button-wrapper--talk {
-    display: flex;
-    align-items: center;
-    margin: 0 0.5em;
+.ridvan-edit-link,
+.ridvan-talk-link,
+.mw-checkbox-hack-button {
+    display: inline-block;
+    width: 24px;           /* Icon Size */
+    height: 24px;
+    font-size: 0;          /* Hide the text label */
+    color: transparent;    /* Hide text fallback */
+    
+    /* Background Color = The color of the icon */
+    background-color: @color-base; 
 
-    ul,
-    li {
-        // Reset list styling to remove bullets, margins, etc.
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+    /* Mask settings */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 
-    // You can style the actual <a> tag here if needed, for example:
-    // a {
-    //   padding: 4px 8px;
-    //   border: 1px solid #a2a9b1;
-    //   border-radius: 2px;
-    // }
-}
-
-// For the Edit button wrapper, show ONLY the li with id="ca-edit".
-.header-button-wrapper--edit {
-    li:not(#ca-edit) {
-        display: none;
-    }
-}
-
-// For the Talk button wrapper, show ONLY the li with id="ca-talk".
-.header-button-wrapper--talk {
-    li:not(#ca-talk) {
-        display: none;
+    /* Add some spacing if needed */
+    margin: 0 5px;
+    cursor: pointer;
+    
+    /* Optional: Hover effect */
+    &:hover {
+        background-color: @color-primary; 
     }
 }
 
-// For the "More" dropdown menu, hide the Edit and Talk buttons,
-// which are now displayed separately.
-#p-hybrid-actions {
-    #ca-edit,
-    #ca-talk {
-        display: none;
-    }
+/* 2. Edit Icon (Pencil) */
+.ridvan-edit-link {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E");
+}
+
+/* 3. Discussion Icon (Speech Bubbles) */
+.ridvan-talk-link {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E");
+}
+
+/* 4. More Dropdown Icon (Caret / Three Dots) */
+.mw-checkbox-hack-button {
+    /* Reset the button appearance since it's a label */
+    border: none;
+    background: none;
+    /* Re-apply background-color for the mask to work */
+    background-color: @color-base; 
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E");
 }
