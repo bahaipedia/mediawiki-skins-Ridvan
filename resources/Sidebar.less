@@ -1,77 +1,76 @@
 @import 'mediawiki.skin.variables.less';
 
-.toggle-list__list {
-	position: fixed;
-	left: 0;
-	top: 0;
-	min-width: 70%;
-	max-width: 320px;
-	bottom: 0;
-	background: #fff;
-	z-index: 4;
-	display: none;
+/* 1. HIDE MOBILE TOGGLE ELEMENTS */
+/* We hide the checkbox, the label (icon), and the mask since we are doing a permanent desktop sidebar */
+.toggle-list__checkbox,
+.toggle-list__toggle,
+.toggle-list__mask,
+.sidebar__icon {
+	display: none !important;
+}
 
+/* 2. SIDEBAR CONTAINER */
+/* This matches the 'grid-area: sidebar' we defined in common.less */
+.toggle-list {
+	background-color: #f8f9fa;     /* Light gray background */
+	border-right: 1px solid #c8ccd1; /* Separator line */
+	padding: 20px 0;
+	height: 100%;                  /* Stretch to fill the grid area */
+	box-sizing: border-box;
+}
+
+/* 3. THE MENU LIST */
+.toggle-list__list {
+	display: block !important; /* Force it to be visible always */
+	position: static;          /* Remove 'fixed' positioning */
+	width: 100%;
+	background: transparent;
+	box-shadow: none;
+	margin: 0;
+	padding: 0;
+
+	/* Portlet Headers (e.g. "Navigation", "Tools") */
 	h3 {
-		display: none;
+		display: block;        /* Make headers visible */
+		padding: 0 15px;
+		margin: 20px 0 5px 0;  /* Spacing above headers */
+		font-size: 0.75rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #72777d;        /* Muted text color */
 	}
 
+	/* First header usually needs less margin at the top */
+	&:first-child h3 {
+		margin-top: 0;
+	}
+
+	/* The List (ul) */
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* The Items (li) */
+	li {
+		padding: 0;
+		margin: 0;
+		display: block;
+	}
+
+	/* The Links (a) */
 	a {
 		display: block;
+		padding: 6px 15px;
+		color: @color-base;
+		text-decoration: none;
+		font-size: 0.9rem;
+
+		&:hover {
+			background-color: #eaecf0; /* Light gray hover effect */
+			color: @color-link;
+			text-decoration: none;
+		}
 	}
-
-	.mw-portlet-body li {
-		display: block;
-		padding: 8px;
-	}
-}
-
-.toggle-list__checkbox:checked ~ .toggle-list__list {
-	display: block;
-}
-
-/* Icons */
-.sidebar__icon {
-	cursor: pointer;
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	top: 40px;
-	overflow: hidden;
-	color: transparent;
-	left: 20px;
-	z-index: 3;
-	filter: @icon-filter;
-}
-
-.sidebar__icon::before {
-	content: '';
-	width: 20px;
-	display: block;
-	height: 20px;
-	// stylelint-disable-next-line function-url-quotes
-	background-image: url( 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22%3E %3Ctitle%3E menu %3C/title%3E %3Cpath d=%22M1 3v2h18V3zm0 8h18V9H1zm0 6h18v-2H1z%22/%3E %3C/svg%3E' );
-}
-
-/* checkbox hack */
-.toggle-list__checkbox {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-}
-
-.toggle-list__checkbox ~ .toggle-list__mask {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	opacity: 0;
-	bottom: 0;
-	background: rgba( 0, 0, 0, 0.8 );
-	z-index: 3;
-	visibility: hidden;
-}
-
-.toggle-list__checkbox:checked ~ .toggle-list__mask {
-	visibility: visible;
-	opacity: 1;
 }
