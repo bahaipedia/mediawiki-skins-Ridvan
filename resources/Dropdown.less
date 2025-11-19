@@ -1,7 +1,7 @@
 @import 'mediawiki.skin.variables.less';
 
 /* Checkbox hack dropdown */
-.mw-portlet-dropdown ~ .mw-portlet {
+.mw-portlet-dropdown + .mw-portlet {
 	li {
 		display: block;
 		padding: 0.75em 0.875em;
@@ -22,12 +22,12 @@
 	}
 
 	input:checked {
-		~ .mw-portlet-body ul {
+		+ .mw-portlet-body ul {
 			opacity: 1;
 			visibility: visible;
 		}
 
-		~ .mw-portlet-body {
+		+ .mw-portlet-body {
 			display: block;
 			opacity: 1;
 		}
