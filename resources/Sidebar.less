@@ -1,72 +1,64 @@
 @import 'mediawiki.skin.variables.less';
 
-/* 1. SIDEBAR COLUMN (The Invisible Stack) */
+/* 1. SIDEBAR CONTAINER */
 .ridvan-sidebar {
-    /* No background or border on the main column anymore */
-    background: transparent; 
-    border: none;
-    box-shadow: none;
-    margin: 0 1em 1em 1em; /* Keep margin for spacing from edge */
-    padding: 0;
-    
-    /* Prevent stretching (from previous step) */
-    align-self: start; 
-    box-sizing: border-box;
+	background-color: #f8f9fa;
+	border: 1px solid @background-color-base;
+	box-shadow: 0 1px 7px 1px rgba(0, 0, 0, 0.1);
+	margin: 0em 1em 1em 1em;
+	padding: 1em;
+	box-sizing: border-box;
+	overflow-wrap: break-word;
 }
 
-/* 2. SIDEBAR ITEMS (The Cards) */
-/* This targets Navigation, Tools, Languages, etc. */
-.ridvan-sidebar .mw-portlet {
-    /* Your requested "Sidebar Item" CSS */
-    background: #f8f9fa;
-    border: solid #eaecf0;
-    border-width: 1px 1px 0.2em;
-    margin: 0 0 1em 0 !important; /* Space between blocks */
-    box-shadow: 0 1px 7px 1px rgba(0, 0, 0, 0.1) !important;
-    padding: 1em;
-    line-height: 1.125;
-    word-wrap: break-word;
-    font-size: 0.95em;
+/* 2. THE MENU LIST */
+.ridvan-sidebar-menu {
+	width: 100%;
+	margin: 0;
+	padding: 0;
 
-    /* Ensure internal content fits */
-    box-sizing: border-box;
-}
+	/* Portlet Headers (e.g. "Navigation", "Tools") */
+	h3 {
+		display: block;
+		padding: 0 15px;
+		margin: 20px 0 5px 0;
+		font-size: 0.75rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #72777d;
+	}
 
-/* 3. PORTLET HEADERS (e.g. "Navigation", "Tools") */
-.ridvan-sidebar h3 {
-    display: block;
-    margin: 0 0 0.5em 0;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid #c8ccd1;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #72777d;
-}
+	/* Remove top margin for the very first header */
+	.mw-portlet:first-child h3 {
+		margin-top: 0;
+	}
 
-/* 4. PORTLET LINKS */
-.ridvan-sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
+	/* The List (ul) */
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
 
-.ridvan-sidebar li {
-    padding: 0;
-    margin: 0;
-    display: block;
-}
+	/* The Items (li) */
+	li {
+		padding: 0;
+		margin: 0;
+		display: block;
+	}
 
-.ridvan-sidebar a {
-    display: block;
-    padding: 6px 0; /* Adjusted padding since we are inside a padded box now */
-    color: @color-base;
-    text-decoration: none;
-    font-size: 0.9rem;
+	/* The Links (a) */
+	a {
+		display: block;
+		padding: 6px 15px;
+		color: @color-base;
+		text-decoration: none;
+		font-size: 0.9rem;
 
-    &:hover {
-        text-decoration: underline;
-        color: @color-link;
-    }
+		&:hover {
+			background-color: #eaecf0;
+			color: @color-link;
+			text-decoration: none;
+		}
+	}
 }
