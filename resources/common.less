@@ -30,17 +30,27 @@ main {
 	}
 
 body {
-		background: @background-color-base;
-		color: @color-base;
-		margin: 0 auto;
-		min-height: 100vh;
-		display: grid;
-		grid-template-columns: 250px 1fr; 
-		grid-template-rows: auto 1fr;
-		grid-template-areas: 
-			"header header"
-			"sidebar content";
-	}
+        background: @background-color-base;
+        color: @color-base;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: grid;
+        
+        /* DESKTOP (Default) */
+        grid-template-columns: 250px 1fr; 
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 
+            "header header"
+            "sidebar content";
+
+        /* MOBILE OVERRIDE */
+        @media (max-width: @max-width-breakpoint-tablet) {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "header"
+                "content";
+        }
+    }
 
 	.mw-header {
 		grid-area: header;
