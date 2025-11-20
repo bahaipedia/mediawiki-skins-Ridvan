@@ -1,9 +1,7 @@
 <aside class="ridvan-sidebar">
-    <div class="ridvan-sidebar-menu">
-        {{#data-portlets-sidebar}}
-            {{#data-portlets-first}}{{>Portlet}}{{/data-portlets-first}}
-            {{#array-portlets-rest}}{{>Portlet}}{{/array-portlets-rest}}
-        {{/data-portlets-sidebar}}
-        {{>Languages}}
-    </div>
+    {{#data-portlets-sidebar}}
+        {{#data-portlets-first}}{{>Portlet}}{{/data-portlets-first}}
+        {{#array-portlets-rest}}{{>Portlet}}{{/array-portlets-rest}}
+    {{/data-portlets-sidebar}}
+    {{>Languages}}
 </aside>
