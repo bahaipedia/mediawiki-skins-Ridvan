@@ -49,13 +49,14 @@ class SkinRidvan extends SkinMustache {
         }
 
         // ---------------------------------------------------------
-        // PART 3: MOBILE DATA PREPARATION (FIXED)
+        // PART 3: MOBILE DATA PREPARATION (STRICT MODE)
         // ---------------------------------------------------------
 
-        // 1. MOBILE MENU (The "First" Sidebar item, usually Navigation)
+        // 1. MOBILE MENU 
+        // STRICT: Only the "First" Sidebar item (Navigation)
         $mobileMenu = $data['data-portlets-sidebar']['data-portlets-first']['array-items'] ?? [];
 
-        // 2. SORT SIDEBAR "REST" -> TOOLS vs LINKS
+        // 2. SORT SIDEBAR "REST"
         $sidebarRest = $data['data-portlets-sidebar']['array-portlets-rest'] ?? [];
         
         $mobileTools = [];
@@ -69,23 +70,23 @@ class SkinRidvan extends SkinMustache {
                 continue;
             }
 
+            // A. WIKIBASE -> LINKS
             if ( $id === 'p-wikibase-otherprojects' || $id === 'p-wikibase' ) {
-                // A. Add to LINKS
                 $mobileLinks = array_merge( $mobileLinks, $items );
-            } elseif ( $id === 'p-navigation' ) {
-                // B. Skip Navigation (Already in Mobile Menu) to avoid duplicates
-                continue;
-            } else {
-                // C. Everything else (Toolbox p-tb, Print/Export, etc) -> TOOLS
+            } 
+            // B. TOOLBOX -> TOOLS (STRICT: Only p-tb)
+            elseif ( $id === 'p-tb' ) {
                 $mobileTools = array_merge( $mobileTools, $items );
+            } 
+            // C. EVERYTHING ELSE -> DROPPED
+            // This ensures Authors, Books, etc. do not appear in Menu OR Tools.
+            else {
+                continue;
             }
         }
 
         // 3. ADD LANGUAGES TO LINKS
-        // We grab the *cleaned* language list if available, or raw if not filtered yet
         $langRaw = $data['data-portlets']['data-languages']['array-items'] ?? [];
-        
-        // Re-apply the wbc-editpage filter just in case to be safe
         $langClean = array_filter( $langRaw, function( $item ) {
             return strpos( $item['class'] ?? '', 'wbc-editpage' ) === false;
         });
@@ -97,8 +98,7 @@ class SkinRidvan extends SkinMustache {
         $data['ridvan-mobile-tools'] = $mobileTools;
         $data['ridvan-mobile-links'] = $mobileLinks;
 
-        // 4. VISIBILITY FLAGS (For Conditional Rendering)
-        // We add these booleans so Mustache can check "if exists" without iterating the array
+        // 4. VISIBILITY FLAG
         $data['ridvan-has-mobile-links'] = !empty($mobileLinks);
 
         return $data;
