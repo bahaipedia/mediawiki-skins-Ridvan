@@ -41,14 +41,16 @@ body {
         grid-template-rows: auto 1fr;
         grid-template-areas: 
             "header header"
-            "sidebar content";
+            "sidebar content"
+			"sidebar categories";
 
         /* MOBILE OVERRIDE */
         @media (max-width: @max-width-breakpoint-tablet) {
             grid-template-columns: 1fr;
             grid-template-areas: 
                 "header"
-                "content";
+                "content"
+				"categories";
         }
     }
 
