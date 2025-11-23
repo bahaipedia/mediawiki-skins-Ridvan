@@ -49,44 +49,68 @@ class SkinRidvan extends SkinMustache {
         }
 
         // ---------------------------------------------------------
-        // PART 3: MOBILE DATA & DEBUGGING
+        // PART 3: MODIFY SIDEBAR DATA (INJECT & REMOVE)
         // ---------------------------------------------------------
-        
+        // We must modify the data source BEFORE assigning it to variables for Mobile Logic.
+
+        if ( isset( $data['data-portlets-sidebar']['array-portlets-rest'] ) ) {
+            foreach ( $data['data-portlets-sidebar']['array-portlets-rest'] as $key => &$portlet ) {
+                $id = $portlet['id'] ?? '';
+
+                // 1. INJECT SPECIAL PAGES INTO TOOLBOX (p-tb)
+                if ( $id === 'p-tb' ) {
+                    $portlet['array-items'][] = [
+                        'id' => 't-specialpages',
+                        'text' => $this->msg( 'specialpages' )->text(),
+                        'href' => \SpecialPage::getTitleFor( 'SpecialPages' )->getLocalURL(),
+                        'class' => ''
+                    ];
+                }
+
+                // 2. REMOVE FALLBACK NAVIGATION (p-navigation)
+                // This removes the section that only contains "Special Pages" redundancy
+                if ( $id === 'p-navigation' ) {
+                    unset( $data['data-portlets-sidebar']['array-portlets-rest'][$key] );
+                }
+            }
+            unset($portlet); // Clean up reference
+
+            // Re-index array so Mustache treats it as a list, not an object
+            $data['data-portlets-sidebar']['array-portlets-rest'] = array_values( $data['data-portlets-sidebar']['array-portlets-rest'] );
+        }
+
+        // ---------------------------------------------------------
+        // PART 4: MOBILE DATA PREPARATION (STRICT MODE)
+        // ---------------------------------------------------------
+
         // 1. MOBILE MENU (Navigation)
         $mobileMenu = $data['data-portlets-sidebar']['data-portlets-first']['array-items'] ?? [];
 
-        // 2. SORT SIDEBAR "REST" & FIND TOOLBOX LOCATION
+        // 2. SORT SIDEBAR "REST" -> TOOLS vs LINKS
+        // Now using the MODIFIED array from Part 3
         $sidebarRest = $data['data-portlets-sidebar']['array-portlets-rest'] ?? [];
         
         $mobileTools = [];
         $mobileLinks = [];
-        
-        // DEBUG ARRAYS
-        $debugInfo = [
-            'Where is p-tb?' => 'Not Found',
-            'Sidebar_Rest_IDs' => [],
-            'Main_Portlets_Has_p-tb' => isset($data['data-portlets']['p-tb']) ? 'YES' : 'NO',
-        ];
-
-        // Check main portlets first
-        if (isset($data['data-portlets']['p-tb'])) {
-            $debugInfo['Where is p-tb?'] = 'In data-portlets[p-tb]';
-        }
 
         foreach ( $sidebarRest as $portlet ) {
-            $id = $portlet['id'] ?? 'NO-ID';
-            $debugInfo['Sidebar_Rest_IDs'][] = $id;
+            $id = $portlet['id'] ?? '';
             $items = $portlet['array-items'] ?? [];
 
-            if ( $id === 'p-tb' ) {
-                $debugInfo['Where is p-tb?'] = 'In Sidebar Rest Array';
-                $mobileTools = array_merge( $mobileTools, $items );
-            } 
-            elseif ( $id === 'p-wikibase-otherprojects' || $id === 'p-wikibase' ) {
+            if ( empty( $items ) ) {
+                continue;
+            }
+
+            // A. WIKIBASE -> LINKS
+            if ( $id === 'p-wikibase-otherprojects' || $id === 'p-wikibase' ) {
                 $mobileLinks = array_merge( $mobileLinks, $items );
             } 
+            // B. TOOLBOX -> TOOLS (STRICT: Only p-tb)
+            elseif ( $id === 'p-tb' ) {
+                $mobileTools = array_merge( $mobileTools, $items );
+            } 
+            // C. EVERYTHING ELSE -> DROPPED (Authors, Books, etc)
             else {
-                // Everything else ignored in strict mode
                 continue;
             }
         }
@@ -103,14 +127,6 @@ class SkinRidvan extends SkinMustache {
         $data['ridvan-mobile-tools'] = $mobileTools;
         $data['ridvan-mobile-links'] = $mobileLinks;
         $data['ridvan-has-mobile-links'] = !empty($mobileLinks);
-
-        // --- RENDER DEBUG BOX ---
-        $debugHtml = '<div style="border: 5px solid red; padding: 20px; background: white; color: black; font-family: monospace; position: relative; z-index: 10000; clear: both;">';
-        $debugHtml .= '<h3>DEBUG: TOOLBOX LOCATION</h3>';
-        $debugHtml .= '<pre>' . print_r($debugInfo, true) . '</pre>';
-        $debugHtml .= '</div>';
-        
-        $data['html-after-content'] .= $debugHtml;
 
         return $data;
     }
