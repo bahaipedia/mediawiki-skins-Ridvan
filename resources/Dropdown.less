@@ -1,6 +1,9 @@
 @import 'mediawiki.skin.variables.less';
 
 /* Checkbox hack dropdown */
+/* We use '~' (General Sibling) because '+' (Adjacent) is fragile 
+   and breaks Personal Tools if there's any whitespace/comments.
+*/
 .mw-portlet-dropdown ~ .mw-portlet {
 	li {
 		display: block;
