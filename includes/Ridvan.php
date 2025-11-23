@@ -20,6 +20,9 @@ class SkinRidvan extends SkinMustache {
 
         foreach ( $allPortlets as $item ) {
             $id = $item['id'] ?? '';
+            if ( $id === 'ca-view' ) {
+                continue;
+            }
             if ( $id === 'ca-edit' || $id === 'ca-viewsource' ) {
                 $editButton = $item;
             } elseif ( $id === 'ca-talk' || $id === 'ca-nstab-talk' ) {
