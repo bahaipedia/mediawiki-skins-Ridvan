@@ -56,18 +56,34 @@ class SkinRidvan extends SkinMustache {
             foreach ( $data['data-portlets-sidebar']['array-portlets-rest'] as $key => &$portlet ) {
                 $id = $portlet['id'] ?? '';
 
-                // 1. INJECT GOOGLE TEST INTO TOOLBOX (p-tb)
+                // 1. INJECT SPECIAL PAGES INTO TOOLBOX (p-tb)
                 if ( $id === 'p-tb' ) {
-                    // Ensure the array exists before appending
+                    // Ensure the array exists
                     if ( !isset( $portlet['array-items'] ) ) {
                         $portlet['array-items'] = [];
                     }
 
+                    // MUST MATCH MUSTACHE SCHEMA:
+                    // ListItem.mustache iterates over 'array-links'
+                    // ListItemLink.mustache iterates over 'array-attributes' to build the <a> tag
                     $portlet['array-items'][] = [
-                        'id' => 't-googletest',
-                        'text' => 'GOOGLE TEST LINK',
-                        'href' => 'https://www.google.com',
-                        'class' => ''
+                        'id' => 't-specialpages',
+                        'class' => 'mw-list-item',
+                        'array-links' => [
+                            [
+                                'text' => $this->msg( 'specialpages' )->text(),
+                                'array-attributes' => [
+                                    [
+                                        'key' => 'href',
+                                        'value' => \SpecialPage::getTitleFor( 'SpecialPages' )->getLocalURL()
+                                    ],
+                                    [
+                                        'key' => 'title',
+                                        'value' => $this->msg( 'specialpages' )->text()
+                                    ]
+                                ]
+                            ]
+                        ]
                     ];
                 }
 
