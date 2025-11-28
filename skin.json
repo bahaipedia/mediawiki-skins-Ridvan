@@ -76,8 +76,7 @@
 				"resources/skin.js"
 			],
 			"dependencies": [
-				"mediawiki.util",
-				"mediawiki.searchSuggest"
+				"mediawiki.util"
 			]
 		}
 	},
