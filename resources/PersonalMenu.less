@@ -1,24 +1,28 @@
 @import 'mediawiki.skin.variables.less';
 
+#p-personal {
+    order: 6;
+}
+
 .mw-portlet-personal {
 	padding: 10px 12px 10px 0;
 	height: 20px;
-	width: 20px;
 }
 
 .mw-portlet-personal.mw-portlet {
 	h3 {
 		background-image: url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAx0lEQVQ4jdXSzQmEQAwFYEuYUixhSwgkA8mQgKXYgS3YgXZgCZagHWgHuxf14t8osssGcv145CVJvjk+hBRFK2TrkK1D0cqHkN7CUBRI7L21KAqXMIDModiwD9oAkLlH0i3L+ooGiTWPAPPfJQTIHLGOB9h46YZnKS+3PI8PISW2GkV7FO2Jrb79h4+ODyElsYJYm437NSRWRCWdylgj++U0u+UAZI5E22hsWW03UWQtr2NT66zlCjz8uzNQbFiDN7F5/xB8aj57Ynp2FKI0bAAAAABJRU5ErkJggg== );
-		text-indent: -999px;
 		background-repeat: no-repeat;
 		height: 100%;
-		width: 40px;
 		margin: 0;
 		padding: 0;
 		background-position: center center;
 		overflow: hidden;
 		display: flex;
+		align-items: center;
 		filter: @icon-filter;
+		font-size: 0.9rem;
+		color: @color-base;
 	}
 
 	li {
@@ -26,6 +30,35 @@
 	}
 }
 
-.ridvan-personal-wrapper {
-    order: 6;
+.mw-portlet-personal.mw-portlet li {
+    display: block;
+}
+
+/* 3. ANONYMOUS STATE (Icon Only) */
+.mw-portlet-personal.is-anon {
+    width: 20px;
+    
+    h3 {
+        text-indent: -999px;
+        width: 40px; 
+    }
+}
+
+/* 4. LOGGED IN STATE (Icon + Name) */
+.mw-portlet-personal.is-loggedin {
+    width: auto;
+    min-width: 20px;
+    
+    h3 {
+        text-indent: 0;
+        width: auto;
+        background-position: left center;
+        padding-left: 24px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    
+    &:hover h3 {
+        color: @color-link;
+    }
 }
