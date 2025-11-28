@@ -4,7 +4,9 @@
     <div id="ridvan-content-column">
         {{>Notices}}
         {{>Content}}
-        {{>CategoryPortlet}}
+        {{^is-mainpage}}
+             {{>CategoryPortlet}}
+        {{/is-mainpage}}
     </div>
 </div>
 {{>Footer}}
