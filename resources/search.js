@@ -1,12 +1,18 @@
 /**
- * Ridvan Search Module
- * Handles Vector-style REST API search and Android IME fixes.
+ * Ridvan Search Module - Debug Mode
  */
 ( function ( $ ) {
     $( function () {
+        console.log( 'Ridvan: search.js loaded successfully.' );
+
         var $searchInput = $( '#searchInput' );
         var $searchForm = $( '#p-search form' );
         
+        if ( $searchInput.length === 0 ) {
+            console.error( 'Ridvan: Error - #searchInput not found in DOM.' );
+            return;
+        }
+
         // 1. Create the results container dynamically
         var $resultsBox = $( '<div>' ).addClass( 'ridvan-search-results' ).hide();
         $searchForm.append( $resultsBox );
@@ -14,8 +20,10 @@
         var searchTimeout;
         var currentController = null;
 
-        // 2. INPUT HANDLER (Solves Android Bug)
-        $searchInput.on( 'input focus', function () {
+        // 2. INPUT HANDLER
+        $searchInput.on( 'input focus', function ( e ) {
+            console.log( 'Ridvan: Input detected. Type:', e.type );
+            
             var query = $( this ).val().trim();
             clearTimeout( searchTimeout );
 
@@ -25,24 +33,33 @@
                 return;
             }
 
-            // Debounce: Wait 250ms
+            // Debounce
             searchTimeout = setTimeout( function() {
+                console.log( 'Ridvan: Debounce finished. Fetching for:', query );
                 performSearch( query );
             }, 250 );
         } );
 
         // 3. REST API FETCHER
         function performSearch( query ) {
-            if ( currentController ) currentController.abort();
+            if ( currentController ) {
+                console.log( 'Ridvan: Aborting previous request.' );
+                currentController.abort();
+            }
             currentController = new AbortController();
 
+            // Note: We use rest.php, NOT api.php
             var apiLink = mw.util.wikiScript('rest') + '/v1/search/title?q=' + encodeURIComponent(query) + '&limit=10';
+            console.log( 'Ridvan: Requesting URL:', apiLink );
 
             fetch( apiLink, { signal: currentController.signal } )
                 .then( function(response) { return response.json(); } )
-                .then( function(data) { renderResults( data.pages, query ); } )
+                .then( function(data) { 
+                    console.log( 'Ridvan: Data received:', data );
+                    renderResults( data.pages, query ); 
+                } )
                 .catch( function(err) {
-                    if ( err.name !== 'AbortError' ) console.error( err );
+                    if ( err.name !== 'AbortError' ) console.error( 'Ridvan: Fetch Error:', err );
                 } );
         }
 
@@ -84,7 +101,6 @@
                 $resultsBox.append( $row );
             } );
 
-            // Footer
             var $footer = $( '<a>' )
                 .addClass( 'ridvan-result-footer' )
                 .attr( 'href', mw.util.getUrl( 'Special:Search' ) + '?search=' + encodeURIComponent(query) + '&fulltext=1' )
@@ -94,7 +110,7 @@
             $resultsBox.show();
         }
 
-        // 5. CLOSE HANDLER & MOBILE FIX
+        // 5. CLOSE HANDLER
         $( window ).on( 'click', function ( e ) {
             if ( !$( e.target ).closest( '#p-search' ).length ) {
                 $resultsBox.hide();
