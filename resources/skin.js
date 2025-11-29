@@ -4,7 +4,7 @@
  */
 ( function ( $ ) {
     $( function () {
-
+        console.log( 'Ridvan: skin.js loaded successfully.' );
         /* ==================================================================
            MENU LOGIC (Close on click-away, Exclusive opening)
            ================================================================== */
