@@ -1,29 +1,68 @@
 @import 'mediawiki.skin.variables.less';
 
-/* 1. CONTAINER SETUP */
+/* ==================================================================
+   1. SEARCH BAR (Your Original Layout)
+   ================================================================== */
 #p-search {
-    position: relative; 
-    overflow: visible !important; 
+    flex-grow: 1;
+    display: flex;
+    padding: 0 0.5em 0em 1em;
+    position: relative;
+
+    #searchInput {
+        width: 100%;
+        max-width: none;
+        background-image: url( data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Ctitle%3Esearch%3C%2Ftitle%3E%3Cg%20fill%3D%22%23D3D3D3%22%3E%3Cpath%20d%3D%22M7.5%2013a5.5%205.5%200%20100-11%205.5%205.5%200%20000%2011zm4.55.46A7.43%207.43%200%20017.5%2015a7.5%207.5%200%20115.96-2.95l6.49%206.49-1.41%201.41-6.49-6.49z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E );
+        background-color: #fff;
+        -webkit-appearance: none;
+        margin-top: 0;
+        font-size: 1rem;
+        height: calc(1.5em + 0.75rem + 2px);
+        border: solid 1px @color-gray-2;
+        padding: 0.375rem 0.75rem;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        outline: 0;
+        background-position: right 6px center;
+        background-repeat: no-repeat;
+        background-size: 18px;
+        
+        /* Ensure border changes smoothly */
+        transition: border-color 250ms, box-shadow 250ms;
+    }
+
+    /* Hide the "Go" button and header */
+    #searchButton,
+    h3 {
+        display: none !important;
+    }
 }
 
-/* 2. DROPDOWN BOX */
+/* ==================================================================
+   2. NEW DROPDOWN STYLING (Vector Style)
+   ================================================================== */
+
+/* The Container */
 .ridvan-search-results {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    z-index: 2000; /* High Z-Index to float over content */
+    z-index: 2000;
     background: #ffffff;
     border: 1px solid #a2a9b1;
     border-top: none;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
     margin-top: -1px;
-    max-height: 80vh; /* Allow scrolling on small screens */
+    max-height: 80vh;
     overflow-y: auto;
+    
+    /* Ensure it fits inside the padding of #p-search */
+    margin-left: 1em;   /* Matches #p-search padding-left */
+    margin-right: 0.5em; /* Matches #p-search padding-right */
 }
 
-/* 3. ROWS */
+/* Result Rows */
 .ridvan-result-row {
     display: flex;
     align-items: center;
@@ -31,16 +70,17 @@
     text-decoration: none;
     color: #202122;
     cursor: pointer;
-    min-height: 48px; /* Standard touch target size */
+    min-height: 48px;
+    border-bottom: 1px solid #eaecf0;
 
     &:hover {
-        background-color: #f8f9fa; /* Vector Hover Grey */
+        background-color: #f8f9fa;
         text-decoration: none;
         color: #000;
     }
 }
 
-/* 4. THUMBNAILS */
+/* Thumbnails */
 .ridvan-thumb-container {
     width: 40px;
     height: 40px;
@@ -60,17 +100,17 @@
 }
 
 .ridvan-thumb-placeholder {
-    /* Generic Document Icon for missing images */
+    /* Generic Document Icon */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='%2372777d'%3E%3Cpath d='M3 0h10l4 4v16H3V0zm0 2v16h12V6h-4V2H3z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.4;
 }
 
-/* 5. TEXT CONTENT */
+/* Text Content */
 .ridvan-result-text {
     flex-grow: 1;
-    min-width: 0; /* Allows text truncation to work in flexbox */
+    min-width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,29 +135,33 @@
     margin-top: 2px;
 }
 
-/* 6. FOOTER */
+/* Footer Link */
 .ridvan-result-footer {
     display: block;
     padding: 12px;
     font-size: 13px;
-    color: #36c; /* Standard Link Blue */
-    border-top: 1px solid #eaecf0;
+    color: @color-link;
+    font-weight: bold;
+    background: #f8f9fa;
     text-align: right;
     
     &:hover {
-        background-color: #f8f9fa;
+        background-color: #eaecf0;
         text-decoration: underline;
     }
 }
 
-/* 7. MOBILE OPTIMIZATIONS */
+/* ==================================================================
+   3. MOBILE OVERRIDES
+   ================================================================== */
 @media ( max-width: @max-width-breakpoint-tablet ) {
     .ridvan-search-results {
         position: fixed;
-        top: 60px; /* Adjust to match your header height */
+        top: 60px; /* Adjust based on your header height */
         left: 2%;
         width: 96%;
         max-height: 60vh;
-        box-shadow: 0 30px 50px rgba(0,0,0,0.5); /* Deep shadow for overlay feel */
+        margin: 0; /* Reset margins used for desktop alignment */
+        box-shadow: 0 30px 50px rgba(0,0,0,0.5);
     }
 }
