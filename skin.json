@@ -74,7 +74,7 @@
 			],
 			"packageFiles": [
 				"resources/skin.js",
-				"resources/search.js",
+				"resources/search.js"
 			],
 			"dependencies": [
 				"mediawiki.util"
