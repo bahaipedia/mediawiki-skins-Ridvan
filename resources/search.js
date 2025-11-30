@@ -5,6 +5,7 @@
  */
 ( function ( mw, $ ) {
 	$( function () {
+		console.log( 'Ridvan: search.js loaded successfully.' );
 		var $input = $( '#searchInput' );
 		if ( !$input.length ) {
 			return;
