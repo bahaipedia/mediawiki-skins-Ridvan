@@ -1,3 +1,14 @@
+/* Default state: Hide the dropdown completely */
+.citizen-typeahead {
+    display: none;
+}
+
+/* ONLY show the dropdown if it contains a group that is NOT hidden */
+/* This prevents the empty border from showing up */
+.citizen-typeahead:has(.citizen-typeahead-group:not([hidden])) {
+    display: block;
+}
+
 /* --- COMPATIBILITY LAYER --- */
 /* Maps Citizen variables to standard MediaWiki/Codex variables */
 .citizen-typeahead {
