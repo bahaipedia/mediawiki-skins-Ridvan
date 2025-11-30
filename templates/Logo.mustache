@@ -6,10 +6,9 @@
         {{#wordmark}}<img src="{{src}}" width="{{width}}" height="{{height}}">{{/wordmark}}
 
         {{! 2. Legacy Fallback ($wgLogo) }}
-        {{! If we are using the old variable, the image is stored in '1x' }}
         {{^icon}}
             {{^wordmark}}
-                {{#1x}}<img src="{{.}}" alt="Logo">{{/1x}}
+                {{#1x}}<img src="{{.}}" height="40" width="auto" style="height: 40px; width: auto;" alt="Logo">{{/1x}}
             {{/wordmark}}
         {{/icon}}
     {{/data-logos}}
