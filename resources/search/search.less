@@ -145,10 +145,15 @@
 	&-description { color: var( --color-subtle ); font-size: 0.85em;}
 }
 
-/* Force hide placeholder and action group */
-#citizen-typeahead-placeholder,
-#citizen-typeahead-group-action {
+/* Only hide the placeholder */
+#citizen-typeahead-placeholder {
 	display: none !important;
+}
+
+/* Style the action group to look distinct (Optional) */
+#citizen-typeahead-group-action {
+    border-top: 1px solid var(--border-color-base);
+    margin-top: 4px;
 }
 
 /* Hide default MediaWiki suggestions */
