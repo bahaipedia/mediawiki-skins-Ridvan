@@ -142,6 +142,15 @@ const typeahead = {
 			this.setMax( this.elements.length );
 		}
 	},
+	close: function () {
+		const groupEl = document.getElementById( 'citizen-typeahead-group-page' );
+		const actionEl = document.getElementById( 'citizen-typeahead-group-action' );
+		
+		if ( groupEl ) groupEl.hidden = true;
+		if ( actionEl ) actionEl.hidden = true;
+		
+		typeahead.items.clearIndex();
+	},
 	onBlur: function ( event ) {
 		const typeaheadElement = typeahead.element;
 		if ( !typeaheadElement.contains( event.relatedTarget ) ) {
@@ -207,6 +216,16 @@ const typeahead = {
 		if ( this.input.element.value.length > 0 ) {
 			this.afterSearchQueryInput();
 		}
+		document.addEventListener( 'click', function ( event ) {
+            // Check if the click was inside the Dropdown OR inside the Form (Search bar)
+            const isClickInside = typeahead.element.contains( event.target ) || 
+                                  typeahead.form.element.contains( event.target );
+
+            // If it was outside both, close the menu
+            if ( !isClickInside ) {
+                typeahead.close();
+            }
+        } );
 	}
 };
 
