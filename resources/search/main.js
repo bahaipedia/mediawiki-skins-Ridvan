@@ -1,3 +1,4 @@
+console.log( 'Ridvan: search js loaded successfully.' );
 /**
  * @return {void}
  */
