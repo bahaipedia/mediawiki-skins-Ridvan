@@ -114,6 +114,11 @@
 		margin: 0;
 		padding: var( --space-xs ) var( --space-md );
 		cursor: pointer;
+
+		&:hover,
+		&[ data-mw-typeahead-selected ] {
+			background-color: var( --background-color-button-quiet--hover );
+		}
 	}
 
 	&-image {
@@ -128,7 +133,6 @@
 		&--placeholder {
 			display: grid;
 			place-content: center;
-			background-color: var( --color-surface-3 );
 		}
 	}
 
