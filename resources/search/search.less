@@ -95,6 +95,8 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	display: flex !important;
+    flex-direction: column !important;
 
 	.citizen-typeahead-group--chips & {
 		display: flex;
@@ -111,8 +113,12 @@
 	&-link {
 		display: flex;
 		gap: var( --space-sm );
+		width: 100%;
 		align-items: center;
 		min-height: 44px;
+		float: none;
+		box-sizing: border-box;
+		margin: 0;
 		padding: var( --space-xs ) var( --space-md );
 		cursor: pointer;
 
