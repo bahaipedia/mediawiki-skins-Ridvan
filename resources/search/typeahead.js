@@ -42,14 +42,7 @@ const typeahead = {
 			this.element.classList.add( 'citizen-typeahead-input' );
 			this.element.setAttribute( 'aria-autocomplete', 'list' );
 			this.element.setAttribute( 'aria-controls', typeahead.element.id );
-
 			this.element.addEventListener( 'focus', this.onFocus );
-			
-			// Auto-focus if visible and not disabled
-			const isVisible = this.element.offsetWidth > 0 || this.element.offsetHeight > 0;
-			if ( isVisible && !this.element.disabled && !this.element.readOnly ) {
-				requestAnimationFrame( () => { this.element.focus(); } );
-			}
 		},
 		onCompositionstart: function () {
 			typeahead.input.element.addEventListener( 'compositionend', typeahead.input.onCompositionend );
