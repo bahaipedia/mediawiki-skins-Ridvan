@@ -1,4 +1,4 @@
-console.log( 'Ridvan: search js loaded successfully.' );
+console.log( 'Ridvan: search2 js loaded successfully.' );
 /**
  * @return {void}
  */
