@@ -16,7 +16,7 @@ function searchAction() {
 					fulltext: '1',
 					search: searchQuery.value
 				} ),
-				icon: 'articleSearch',
+				icon: 'ridvanSearch',
 				text: mw.message( 'citizen-search-fulltext', searchQuery.value ).text()
 			} );
 
@@ -24,7 +24,7 @@ function searchAction() {
 			items.push( {
 				id: 'editpage',
 				href: this.urlGeneratorInstance.generateUrl( searchQuery.value, { action: 'edit' } ),
-				icon: 'edit',
+				icon: 'ridvanEdit',
 				text: mw.message( 'citizen-search-editpage', searchQuery.value ).text()
 			} );
 
