@@ -1,11 +1,14 @@
 const fetchJson = require( './fetch.js' );
 const urlGenerator = require( './urlGenerator.js' );
 
+console.log('Ridvan: Loaded fixed searchClient.js');
+
 /**
  * Simplified Search Client for MediaWiki REST API
- * Mimics the structure of Citizen's complex client factory
  */
 function searchClient( config ) {
+	console.log('Ridvan: Initializing searchClient...');
+
 	// Helper to format the API response
 	function adaptApiResponse( query, response, showDescription ) {
 		const urlGen = urlGenerator( config );
@@ -30,10 +33,9 @@ function searchClient( config ) {
 		};
 	}
 
-	// This object mimics the "mwRestApiSearchClient" instance
+	// This internal object mimics the API client
 	const internalClient = {
 		fetchByTitle: ( q, limit = config.wgCitizenMaxSearchResults, showDescription = true ) => {
-			// Ensure we use the correct script path from MW config
 			const scriptPath = mw.config.get( 'wgScriptPath' ) || config.wgScriptPath;
 			const searchApiUrl = scriptPath + '/rest.php';
 			
@@ -53,20 +55,19 @@ function searchClient( config ) {
 		}
 	};
 
-	// return the object structure typeahead.js expects
+	// RETURN OBJECT
+	// This must match what typeahead.js expects!
 	return {
-		// The active client holder
 		active: {
 			id: 'mwRestApi',
 			client: internalClient
 		},
-
-		// No-op: We only support one client, so we ignore requests to switch
+		// Dummy function to prevent crash
 		setActive: function ( id ) {
+			console.log('Ridvan: setActive called (ignoring)');
 			return;
 		},
-
-		// No-op: We don't support special command data (like starting search with "/")
+		// Dummy function to prevent crash
 		getData: function ( key, value ) {
 			return null;
 		}
