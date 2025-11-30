@@ -73,8 +73,7 @@
 				"mobile"
 			],
 			"packageFiles": [
-				"resources/skin.js",
-				"resources/search.js"
+				"resources/skin.js"
 			],
 			"dependencies": [
 				"mediawiki.util"
