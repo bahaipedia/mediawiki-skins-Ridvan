@@ -69,7 +69,7 @@ function searchResults() {
 				if ( result.thumbnail && result.thumbnail.url ) {
 					item.image.url = result.thumbnail.url;
 				} else {
-					item.image.class = 'citizen-typeahead-list-item-image--placeholder citizen-ui-icon mw-ui-icon-wikimedia-image';
+					item.image.class = 'citizen-search-placeholder';
 				}
 				items.push( item );
 			} );
