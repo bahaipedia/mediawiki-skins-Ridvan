@@ -5,7 +5,9 @@
         {{>Notices}}
         {{>Content}}
         {{^is-mainpage}}
-             {{>CategoryPortlet}}
+            {{^is-redirect}}
+                 {{>CategoryPortlet}}
+            {{/is-redirect}}
         {{/is-mainpage}}
     </div>
 </div>
