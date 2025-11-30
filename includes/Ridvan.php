@@ -2,6 +2,17 @@
 
 class SkinRidvan extends SkinMustache {
 
+    public function getDefaultModules(): array {
+		$modules = parent::getDefaultModules();
+		$config = $this->getConfig();
+
+		if ( $config->get( 'SearchSuggestionsReplacement' ) ) {
+			$modules['scripts'][] = 'skins.ridvan.search';
+		}
+
+		return $modules;
+	}
+
     public function getTemplateData() {
         $data = parent::getTemplateData();
 
