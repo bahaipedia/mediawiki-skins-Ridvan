@@ -135,6 +135,20 @@
 				"mediawiki.util",
 				"mediawiki.ui.icon"
 			]
+		},
+		"skins.ridvan.redirectfixer": {
+			"scripts": [
+				"resources/redirect-fixer.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.util",
+				"mediawiki.jqueryMsg"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
