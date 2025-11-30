@@ -86,8 +86,6 @@
 				"resources/search/typeahead.js",
 				"resources/search/searchResults.js",
 				"resources/search/searchQuery.js",
-				"resources/search/searchHistory.js",
-				"resources/search/searchPresults.js",
 				"resources/search/searchAction.js",
 				"resources/search/searchClient.js",
 				"resources/search/urlGenerator.js",
