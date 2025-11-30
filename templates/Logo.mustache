@@ -1,8 +1,17 @@
 <div id="p-logo" class="mw-portlet" role="banner">
     <a href="{{link-mainpage}}">
     {{#data-logos}}
+        {{! 1. Modern Configuration ($wgLogos) }}
         {{#icon}}<img class="icon" src="{{.}}" width="40" height="40">{{/icon}}
         {{#wordmark}}<img src="{{src}}" width="{{width}}" height="{{height}}">{{/wordmark}}
+
+        {{! 2. Legacy Fallback ($wgLogo) }}
+        {{! If we are using the old variable, the image is stored in '1x' }}
+        {{^icon}}
+            {{^wordmark}}
+                {{#1x}}<img src="{{.}}" alt="Logo">{{/1x}}
+            {{/wordmark}}
+        {{/icon}}
     {{/data-logos}}
     </a>
 </div>
