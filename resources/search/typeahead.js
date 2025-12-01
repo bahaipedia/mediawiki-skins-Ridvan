@@ -67,11 +67,18 @@ const typeahead = {
 		},
 		onInput: function () {
 			const typeaheadInputElement = typeahead.input.element;
+			const groupEl = document.getElementById( 'czsearch-typeahead-group-page' );
+
 			if ( typeaheadInputElement.value.length > 0 ) {
-                typeahead.form.setLoadingState( true );
-            } else {
-                typeahead.form.setLoadingState( false );
-            }
+				// Only show spinner if the menu is currently CLOSED (hidden).
+				// If it's already open, we do nothing so the old results stay visible.
+				if ( groupEl && groupEl.hidden ) {
+					typeahead.form.setLoadingState( true );
+				}
+			} else {
+				typeahead.form.setLoadingState( false );
+			}
+
 			typeaheadInputElement.addEventListener( 'compositionstart', typeahead.input.onCompositionstart );
 			if ( typeahead.input.isComposing !== true ) {
 				mw.util.debounce( typeahead.afterSearchQueryInput(), 100 );
@@ -262,18 +269,11 @@ async function getSuggestions() {
 			groupEl.hidden = false; 
 		}
 
-        // We handle typeahead.items.set() here, but loading state is handled in 'finally'
+		typeahead.form.setLoadingState( false );
 		typeahead.items.set();
 	};
 
-	// 1. Start Spinner
-	typeahead.form.setLoadingState( true );
-
-	const groupEl = document.getElementById( 'czsearch-typeahead-group-page' );
-	if ( groupEl ) groupEl.hidden = true;
-
 	const { abort, fetch } = searchResults.fetch( searchQuery.value, searchClient.active.client );
-	
 	const inputEventListener = () => {
 		abort();
 		typeahead.input.element.removeEventListener( 'input', inputEventListener );
@@ -282,23 +282,18 @@ async function getSuggestions() {
 
 	try {
 		const response = await fetch;
-		// Check if response has results array
 		if ( response && response.results ) {
 			renderSuggestions( response.results );
 		} else {
-			// Fallback if structure is unexpected
-			console.warn('Ridvan: Unexpected API response format', response);
 			renderSuggestions([]); 
 		}
 	} catch ( error ) {
 		if ( error.name !== 'AbortError' ) {
-			console.error('Ridvan Search Error:', error);
-            // Don't show empty results on error, just keep previous state or show error
+            // Only turn off spinner if it wasn't an abort (i.e. real error)
+            // If it was an abort, a new request is coming, so keep state as is
+            typeahead.form.setLoadingState( false );
 		}
-	} finally {
-        // --- CRITICAL FIX: ALWAYS TURN OFF SPINNER ---
-        typeahead.form.setLoadingState( false );
-    }
+	}
 }
 
 function updateTypeaheadItems() {
