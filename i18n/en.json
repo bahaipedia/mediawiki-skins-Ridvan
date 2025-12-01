@@ -12,7 +12,7 @@
 	"czsearch-search-noresults-desc": "Check your spelling or try a different search term.",
 	"czsearch-search-fulltext": "Search all pages for \"$1\"",
 	"searchsuggest-search": "Search",
-	"czsearch-search-editpage": "Edit or create page \"$1\"",
+	"czsearch-search-editpage": "Edit or create the page \"$1\"",
 	"czsearch-search-mediasearch": "Search for media files matching \"$1\"",
 	"czsearch-search-empty-desc": "Search for pages, media, and more",
 	"search-redirect": "(Redirects to $1)"
