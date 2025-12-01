@@ -7,5 +7,13 @@
 	"skinname-ridvan": "{{optional}}",
 	"ridvan-skin-desc": "{{desc|what=skin|name=Ridvan|url=https://www.mediawiki.org/wiki/Skin:Ridvan}}",
 	"ridvan-no-categories": "Message to show when no categories available",
-	"ridvan-mobile-links-label": "Label for the mobile dropdown menu containing interwiki and language links."
+	"ridvan-mobile-links-label": "Label for the mobile dropdown menu containing interwiki and language links.",
+	"czsearch-search-noresults-title": "Title shown in the search dropdown when no results are found. $1 is the user's search query.",
+	"czsearch-search-noresults-desc": "Description shown in the search dropdown when no results are found, advising the user to check spelling.",
+	"czsearch-search-fulltext": "Label for the button that takes the user to the Special:Search page for a full text search. $1 is the user's search query.",
+	"searchsuggest-search": "Placeholder text for the search input box.",
+	"czsearch-search-editpage": "Label for the button that takes the user to edit or create the page. $1 is the page title (search query).",
+	"czsearch-search-mediasearch": "Label for the button that takes the user to the media search page. $1 is the user's search query.",
+	"czsearch-search-empty-desc": "Description shown in the search dropdown placeholder when the input is empty.",
+	"search-redirect": "Label indicating a search result is a redirect. $1 is the target page title."
 }
