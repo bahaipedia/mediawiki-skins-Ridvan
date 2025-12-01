@@ -27,6 +27,10 @@ const typeahead = {
 			this.element.setAttribute( 'aria-owns', typeahead.element.id );
 		},
 		setLoadingState: function ( state ) {
+			const spinner = document.getElementById( 'czsearch-typeahead-loading' );
+            if ( spinner ) {
+                spinner.hidden = !state;
+            }
 			this.element.classList.toggle( SEARCH_LOADING_CLASS, state );
 			this.isLoading = state;
 		}
