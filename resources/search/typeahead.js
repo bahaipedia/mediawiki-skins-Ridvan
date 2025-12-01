@@ -248,13 +248,13 @@ async function getSuggestions() {
 			// CASE B: No results found
 			// Inject a simple list item that says "No results"
 			const noResultHTML = `
-				<li class="citizen-typeahead-list-item">
-					<div class="citizen-typeahead-list-item-link" style="cursor: default;">
-						<div class="citizen-typeahead-list-item-text">
-							<div class="citizen-typeahead-list-item-title" style="color: var(--color-subtle);">
+				<li class="czsearch-typeahead-list-item">
+					<div class="czsearch-typeahead-list-item-link" style="cursor: default;">
+						<div class="czsearch-typeahead-list-item-text">
+							<div class="czsearch-typeahead-list-item-title" style="color: var(--color-subtle);">
 								${ mw.message( 'czsearch-search-noresults-title', searchQuery.value ).escaped() }
 							</div>
-							<div class="citizen-typeahead-list-item-description">
+							<div class="czsearch-typeahead-list-item-description">
 								${ mw.message( 'czsearch-search-noresults-desc' ).escaped() }
 							</div>
 						</div>
