@@ -196,14 +196,18 @@
     justify-content: center;
     align-items: center;
 
-		&-spinner {
-		    border: 3px solid rgba(0, 0, 0, 0.1);
-		    border-left-color: var(--color-emphasized);
-		    border-radius: 50%;
-		    width: 24px;
-		    height: 24px;
-		    animation: czsearch-spin 1s linear infinite;
-	}
+    &[hidden] {
+        display: none !important;
+    }
+
+    &-spinner {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-left-color: var(--color-emphasized);
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        animation: czsearch-spin 1s linear infinite;
+    }
 }
 
 @keyframes czsearch-spin {
