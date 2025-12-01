@@ -1,4 +1,8 @@
 <div id="searchform-suggestions" class="czsearch-typeahead">
+    <div id="czsearch-typeahead-loading" class="czsearch-typeahead-loading" hidden>
+        <div class="czsearch-typeahead-loading-spinner"></div>
+    </div>
+
 	{{#array-lists}}{{>TypeaheadList}}{{/array-lists}}
 	{{#data-placeholder}}{{>TypeaheadPlaceholder}}{{/data-placeholder}}
 </div>
