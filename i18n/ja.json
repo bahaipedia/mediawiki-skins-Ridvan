@@ -1,4 +1,6 @@
 {
+	"ridvan-no-categories": "カテゴリなし",
+	"ridvan-mobile-links-label": "リンク",
 	"czsearch-search-noresults-title": "「$1」の検索結果はありません",
 	"czsearch-search-noresults-desc": "綴りを確認するか、別の検索語を試してください。",
 	"czsearch-search-fulltext": "全文検索: 「$1」",
