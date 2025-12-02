@@ -4,7 +4,7 @@ Ridvan is a modern, responsive MediaWiki skin originally developed for [Bahaiped
 
 ## Credits
 
-* **Author:** Sarah Haslip
+* **Author:** [Sarah Haslip](https://bahaipedia.org/User:Sarah)
 * **Search Module:** Adapted from [Skin:Citizen](https://www.mediawiki.org/wiki/Skin:Citizen) (Thanks to Alistair3149 & Octfx).
 
 ## Requirements
