@@ -1,6 +1,6 @@
 # Skin:Ridvan
 
-Ridvan is a modern, responsive MediaWiki skin originally developed for [Bahaipedia.org](https://bahaipedia.org). It is a rewrite of Skin:Chameleon using modern standards and features an adaption of the Skin:Citizen search suggestions.
+Ridvan is a modern, responsive MediaWiki skin originally developed for [Bahaipedia.org](https://bahaipedia.org). It is a rewrite of the Skin:Chameleon NavHead layout that we used for several years, minus the need for Bootstrap. Search suggestions are an adaption of code found in Skin:Citizen.
 
 ## Credits
 
