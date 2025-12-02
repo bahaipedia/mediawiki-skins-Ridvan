@@ -1,13 +1,10 @@
 const fetchJson = require( './fetch.js' );
 const urlGenerator = require( './urlGenerator.js' );
 
-console.log('Ridvan: Loaded fixed searchClient.js');
-
 /**
  * Simplified Search Client for MediaWiki REST API
  */
 function searchClient( config ) {
-	console.log('Ridvan: Initializing searchClient...');
 
 	// Helper to format the API response
 	function adaptApiResponse( query, response, showDescription ) {
@@ -64,7 +61,6 @@ function searchClient( config ) {
 		},
 		// Dummy function to prevent crash
 		setActive: function ( id ) {
-			console.log('Ridvan: setActive called (ignoring)');
 			return;
 		},
 		// Dummy function to prevent crash
