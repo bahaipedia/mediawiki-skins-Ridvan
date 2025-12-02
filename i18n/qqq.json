@@ -4,8 +4,8 @@
 			"..."
 		]
 	},
-	"skinname-ridvan": "{{optional}}",
-	"ridvan-skin-desc": "{{desc|what=skin|name=Ridvan|url=https://www.mediawiki.org/wiki/Skin:Ridvan}}",
+	"skinname-ridvan": "Ridvan",
+	"ridvan-skin-desc": "A responsive MediaWiki skin for Bahaipedia.",
 	"ridvan-no-categories": "Message to show when no categories available",
 	"ridvan-mobile-links-label": "Label for the mobile dropdown menu containing interwiki and language links.",
 	"czsearch-search-noresults-title": "Title shown in the search dropdown when no results are found. $1 is the user's search query.",
