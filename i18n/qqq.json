@@ -5,7 +5,7 @@
 		]
 	},
 	"skinname-ridvan": "Ridvan",
-	"ridvan-skin-desc": "A responsive MediaWiki skin for Bahaipedia.",
+	"ridvan-skin-desc": "Description of the skin, shown on [[Special:Version]]. Mentions that it is a rewrite of the Chameleon skin and was created for Bahaipedia.",
 	"ridvan-no-categories": "Message to show when no categories available",
 	"ridvan-mobile-links-label": "Label for the mobile dropdown menu containing interwiki and language links.",
 	"czsearch-search-noresults-title": "Title shown in the search dropdown when no results are found. $1 is the user's search query.",
