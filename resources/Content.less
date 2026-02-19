@@ -58,10 +58,10 @@
 }
 
 .mw-body {
-    box-shadow: 4px 3px 7px 3px rgba(0, 0, 0, 0.1);
-    border: solid #eaecf0;
+    box-shadow: 4px 3px 7px 3px @shadow-color;
+    border: solid @border-color-base; 
     border-width: 1px 1px 0.2em;
-    background: #ffffff;
+    background: @background-color-card;
     padding: 0em 2em 1em;
     margin-bottom: 10px;
     overflow: auto;
@@ -92,12 +92,16 @@
     font-size: 1rem;
     padding: 4px;
     line-height: 1.4;
+    color: @color-base;
+    background: @background-color-card;
+    border: 1px solid @border-color-base;
 }
 .catlinks {
-    box-shadow: 4px 3px 7px 3px rgba(0, 0, 0, 0.1);
-    border: solid #eaecf0;
+    box-shadow: 4px 3px 7px 3px var(--catlinks-shadow);
+    border: solid var(--catlinks-border);
     border-width: 1px 1px 0.2em;
-    background: #ffffff;
+    background: var(--catlinks-bg);
+    color: var(--catlinks-text);
     padding: 1em 2em 1em;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -130,5 +134,210 @@
     .mw-enhanced-rc td, .mw-enhanced-rc th {
         padding-left: 2px;
         padding-right: 2px;
+    }
+}
+
+/* ==========================================================================
+   DARK MODE CONSOLIDATED BLOCK
+   ========================================================================== */
+
+html.ridvan-dark-mode {
+    /* --- A. Diff View --- */
+    table.diff {
+        background-color: transparent;
+        border: none;
+        
+        td { color: var(--color-diff-text); }
+        td.diff-context {
+            background-color: transparent;
+            border-color: @border-color-base;
+            color: @color-gutter-text; 
+        }
+        td.diff-deletedline {
+            background-color: var(--background-color-diff-deleted);
+            border-color: var(--background-color-diff-deleted);
+            .diffchange {
+                background-color: var(--background-color-diff-change-del);
+                color: @color-base;
+                font-weight: bold;
+            }
+        }
+        td.diff-addedline {
+            background-color: var(--background-color-diff-added);
+            border-color: var(--background-color-diff-added);
+            .diffchange {
+                background-color: var(--background-color-diff-change-add);
+                color: @color-base;
+                font-weight: bold;
+            }
+        }
+        td.diff-marker {
+            color: @color-gray;
+            font-weight: bold;
+        }
+    }
+
+    /* --- B. Wikitables --- */
+    .wikitable {
+        background-color: @background-color-card !important;
+        color: @color-base !important;
+        border-color: @border-color-base !important;
+
+        > tr > th,
+        > * > tr > th {
+            background-color: @background-color-ui-subtle !important;
+            color: @color-base !important;
+            border-color: @border-color-base !important;
+        }
+
+        > tr > td,
+        > * > tr > td {
+            border-color: @border-color-base !important;
+            color: @color-base !important;
+        }
+        
+        caption { color: @color-base !important; }
+    }
+
+    /* --- C. CodeEditor (Lua Ace Edit Mode) --- */
+    .ace-tm {
+        background-color: @background-color-editor !important;
+        color: @color-editor-text !important;
+
+        .ace_gutter {
+            background-color: @background-color-gutter !important;
+            color: @color-gutter-text !important;
+            border-right: 1px solid @border-color-ui-widget !important;
+        }
+        
+        .ace_marker-layer .ace_active-line {
+            background-color: @background-color-ui-subtle !important;
+        }
+
+        .ace_cursor { color: @color-editor-text !important; }
+
+        .ace_marker-layer .ace_selection {
+            background-color: @color-link !important;
+            opacity: 0.25;
+        }
+
+        /* Syntax Highlighting (Edit Mode) */
+        .ace_storage, 
+        .ace_keyword { color: #cc7832 !important; } /* Gold */
+        .ace_string  { color: #6a8759 !important; } /* Green */
+        .ace_comment { color: @color-gutter-text !important; }
+        .ace_constant.ace_numeric { color: #6897bb !important; } /* Blue */
+        .ace_identifier { color: inherit !important; }
+    }
+
+    .codeEditor-status {
+        background-color: @background-color-editor-bar !important;
+        border-top: 1px solid @border-color-ui-widget !important;
+        color: @color-editor-text !important;
+    }
+
+    /* --- D. Syntax Highlighting (View Mode / .mw-highlight) --- */
+    .mw-highlight {
+        background-color: @background-color-editor !important;
+        color: @color-editor-text !important;
+        border: 1px solid @border-color-ui-widget !important;
+        padding: 1em;
+    }
+
+    .mw-highlight pre {
+        background-color: transparent !important;
+        border: none !important;
+        color: inherit !important;
+        font-family: monospace;
+    }
+
+    /* Syntax Highlighting Mapping */
+    .mw-highlight .k, 
+    .mw-highlight .kd,
+    .mw-highlight .kp,
+    .mw-highlight .kr,
+    .mw-highlight .kt { color: #cc7832 !important; font-weight: bold; }
+
+    .mw-highlight .s,
+    .mw-highlight .s1,
+    .mw-highlight .s2,
+    .mw-highlight .se,
+    .mw-highlight .si { color: #6a8759 !important; }
+
+    .mw-highlight .c,
+    .mw-highlight .c1,
+    .mw-highlight .cm,
+    .mw-highlight .cs { color: @color-gutter-text !important; font-style: italic; }
+
+    .mw-highlight .m,
+    .mw-highlight .mi,
+    .mw-highlight .mf { color: #6897bb !important; }
+
+    .mw-highlight .n,
+    .mw-highlight .na,
+    .mw-highlight .nb,
+    .mw-highlight .nn,
+    .mw-highlight .nv { color: @color-editor-text !important; }
+    
+    .mw-highlight .nc { color: #4ec9b0 !important; } /* Teal for Class Names */
+    .mw-highlight .nf { color: #dcdcaa !important; } /* Yellow for Functions */
+
+    .mw-highlight .o,
+    .mw-highlight .ow { color: @color-editor-text !important; }
+
+    /* Box-shadow gutter in view mode */
+    .mw-content-ltr.mw-highlight-lines pre,
+    .mw-content-ltr.content .mw-highlight-lines pre {
+        box-shadow: unset !important;
+    }
+
+   /* RC Filters Dropdown Header */
+    .mw-rcfilters-ui-filterMenuHeaderWidget-header {
+        background-color: @background-color-ui-subtle !important;
+        border-bottom: 1px solid @border-color-ui-widget !important;
+    }
+
+   /* RC Filters Section Headers (The gray dividers) */
+    .mw-rcfilters-ui-filterMenuSectionOptionWidget {
+        background-color: @background-color-editor-bar !important; 
+        color: @color-base !important;
+    }
+
+   /* RC Filters Selected Item */
+   .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
+        background-color: @background-color-progressive-subtle !important;
+        color: @color-base !important;
+    }
+
+   /* Replace Text Extension Options Box */
+    .ext-replacetext-searchoptions {
+        background-color: @background-color-ui-subtle !important;
+        border-color: @border-color-ui-widget !important;
+        color: @color-base !important;
+    }
+
+   /* AdvancedSearch Field Container */
+    .mw-advancedSearch-fieldContainer {
+        background: @background-color-ui-subtle !important;
+        border-color: @border-color-ui-widget !important;
+    }
+   /* AdvancedSearch Label */
+    .mw-advancedSearch-fieldContainer .oo-ui-labelElement > .oo-ui-fieldsetLayout-header > .oo-ui-labelElement-label {
+        background: @background-color-ui-subtle !important;
+        color: @color-base !important;
+    }
+
+    /* AdvancedSearch Expandable Pane Hover */
+    .mw-advancedSearch-expandablePane-button.oo-ui-widget-enabled.oo-ui-buttonWidget > .oo-ui-buttonElement-button:hover {
+        background-color: @background-color-editor-bar !important;
+        color: @color-base !important;
+    }
+
+   /* Image Thumbnails and Frames */
+    figure[typeof~='mw:File/Thumb'], 
+    figure[typeof~='mw:File/Frame'] {
+        border-color: @border-color-base !important;
+        background-color: @background-color-thumb !important;
+        color: @color-thumb !important;
     }
 }
