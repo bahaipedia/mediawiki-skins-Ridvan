@@ -16,6 +16,30 @@ class SkinRidvan extends SkinMustache {
     public function getTemplateData() {
         $data = parent::getTemplateData();
 
+		// ---------------------------------------------------------
+        // PART 0: INJECT DARK MODE SCRIPT
+        // ---------------------------------------------------------
+        $script = <<<JS
+        <script>
+        (function() {
+            // Apply saved preference immediately
+            var isDark = localStorage.getItem('ridvan-dark-mode') === 'true';
+            if (isDark) {
+                document.documentElement.classList.add('ridvan-dark-mode');
+            }
+            
+            // Define the toggle function globally
+            window.toggleRidvanDarkMode = function(e) {
+                e.preventDefault();
+                var html = document.documentElement;
+                var isDark = html.classList.toggle('ridvan-dark-mode');
+                localStorage.setItem('ridvan-dark-mode', isDark);
+            };
+        })();
+        </script>
+        JS;
+        $this->getOutput()->addHeadItem( 'ridvan-darkmode', $script );
+
         // ---------------------------------------------------------
         // PART 1: GLOBAL FLAGS & METADATA
         // ---------------------------------------------------------
@@ -89,6 +113,8 @@ class SkinRidvan extends SkinMustache {
                     if ( !isset( $portlet['array-items'] ) ) {
                         $portlet['array-items'] = [];
                     }
+                    
+                    // Add Special Pages
                     $portlet['array-items'][] = [
                         'id' => 't-specialpages',
                         'class' => 'mw-list-item',
@@ -104,6 +130,21 @@ class SkinRidvan extends SkinMustache {
                                         'key' => 'title',
                                         'value' => $this->msg( 'specialpages' )->text()
                                     ]
+                                ]
+                            ]
+                        ]
+                    ];
+
+                    // Add Dark Mode Toggle
+                    $portlet['array-items'][] = [
+                        'id' => 't-darkmode',
+                        'class' => 'mw-list-item',
+                        'array-links' => [
+                            [
+                                'text' => 'Dark Mode',
+                                'array-attributes' => [
+                                    [ 'key' => 'href', 'value' => '#' ],
+                                    [ 'key' => 'onclick', 'value' => 'toggleRidvanDarkMode(event)' ]
                                 ]
                             ]
                         ]
