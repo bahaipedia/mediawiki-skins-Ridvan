@@ -138,6 +138,146 @@
 }
 
 /* ==========================================================================
+   2. COMPONENT OVERRIDES (UI, EDITOR, OOUI)
+   ========================================================================== */
+
+/* Fix "Active Filters" buttons (Tags) */
+.oo-ui-tagItemWidget,
+.mw-rcfilters-ui-filterTagItemWidget {
+    background-color: @background-color-ui-widget !important;
+    border-color: @border-color-ui-widget !important;
+    color: @color-base; 
+}
+
+/* Fix the Multiselect Handle */
+.oo-ui-tagMultiselectWidget-handle {
+    background-color: @background-color-ui-subtle !important;
+    border-color: @border-color-ui-widget !important;
+}
+
+/* Fix the Input View */
+.mw-rcfilters-ui-cell.mw-rcfilters-ui-filterTagMultiselectWidget-views-input,
+.mw-rcfilters-ui-filterTagMultiselectWidget-views-select {
+    background-color: @background-color-ui-widget !important;
+}
+
+/* Ensure nested labels inherit text color */
+.oo-ui-labelElement-label {
+    color: inherit;
+}
+
+/* Fix OOUI Text Inputs */
+.oo-ui-textInputWidget .oo-ui-inputWidget-input {
+    background-color: @background-color-input !important; 
+    color: @color-input-text !important;
+    border: 1px solid @border-color-ui-widget !important;
+    border-radius: 2px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Fix Buttons and Legend
+.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button {
+    background-color: @background-color-ui-widget !important;
+    color: @color-base !important;
+} This is used on Special:Search, elsewhere? if it's needed we need to fix those buttons*/
+.mw-changeslist-legend {
+    background-color: @background-color-base !important;
+    color: @color-base !important;
+}
+
+/* Main Edit Box */
+textarea,
+.mw-editfont-monospace,
+.ext-WikiEditor-realtimepreview-textbox {
+    background-color: @background-color-editor !important;
+    color: @color-editor-text !important;
+    border-color: @border-color-ui-widget !important;
+}
+
+/* Edit Options Bar */
+.editOptions {
+    background-color: @background-color-editor-bar !important;
+    color: @color-base !important;
+    border-color: @border-color-ui-widget !important;
+}
+
+/* Special Character Buttons */
+.mw-edittools-section input[type="button"] {
+    background-color: @background-color-ui-subtle !important;
+    color: @color-base !important;
+    border: 1px solid @border-color-ui-widget !important;
+}
+
+/* Save/Preview Buttons */
+#wpSave {
+    background-color: @background-color-btn-save !important;
+    color: @color-btn-text !important;
+    border: 1px solid @border-color-ui-widget !important;
+    cursor: pointer;
+}
+#wpPreview,
+#wpDiff {
+    background-color: @background-color-ui-subtle !important;
+    color: @color-base !important;
+    border: 1px solid @border-color-ui-widget !important;
+    cursor: pointer;
+}
+
+/* Code & Pre Blocks (Generic) */
+pre, code, .mw-code {
+    background-color: @background-color-code !important;
+    color: @color-code-text !important;
+    border: 1px solid @border-color-code !important;
+    padding: 1em;
+    display: block;
+}
+.mw-highlight .linenos,
+.hl-linenos {
+    background-color: @background-color-gutter !important;
+    color: @color-gutter-text !important;
+    border-right: 1px solid @border-color-code !important;
+}
+.mw-highlight .linenos a,
+.hl-linenos a {
+    color: @color-gutter-text !important;
+}
+/* Line Highlighting */
+.mw-highlight .hll,
+.hll {
+    background-color: @background-color-highlight !important;
+    display: block; 
+}
+
+/* WikiEditor Toolbar */
+.wikiEditor-ui-toolbar {
+    background-color: @background-color-toolbar !important;
+    border-bottom: 1px solid @border-color-toolbar !important;
+    box-shadow: none !important; 
+}
+.wikiEditor-ui-toolbar .group {
+    border-right: 1px solid @border-color-toolbar !important;
+}
+
+/* Codex Messages (Warnings) */
+.cdx-message--warning {
+    background-color: @background-color-warning-subtle !important;
+    border-color: @border-color-warning !important;
+    color: @color-base !important;
+}
+
+/* Hide Print Margin in CodeEditor (Global) */
+.ace_print-margin {
+    display: none !important;
+}
+
+/* Selected History Items */
+#pagehistory li.selected {
+    background-color: @background-color-ui-subtle;
+    color: @color-base;
+    outline: 1px dashed @border-color-ui-widget;
+}
+
+/* ==========================================================================
    DARK MODE CONSOLIDATED BLOCK
    ========================================================================== */
 
