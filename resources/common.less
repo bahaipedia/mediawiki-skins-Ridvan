@@ -29,19 +29,18 @@ main {
     }
 
     body {
-        background: @background-color-base;
+        background: @border-color-base;
         color: @color-base;
         margin: 0 auto;
         min-height: 100vh;
-        /* CHANGE: Body is now a vertical Flex stack, NOT a Grid */
         display: flex;
         flex-direction: column;
     }
 
-    /* CHANGE: The Grid logic moves to this new container */
+    /* The Grid logic moves to this new container */
     #ridvan-page-container {
         display: grid;
-        flex-grow: 1; /* This forces the middle section to expand and push footer down */
+        flex-grow: 1;
 
         /* DESKTOP */
         grid-template-columns: 250px 1fr;
