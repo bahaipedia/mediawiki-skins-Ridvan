@@ -40,21 +40,28 @@
 	}
 
 	.thumbimage {
-		background: transparent;
-		border: 0;
-	}
+        background: transparent;
+        border: 0;
+    }
+}
 
-	.toc,
-	div.thumbinner {
-		border-color: @color-gray;
-		background-color: @background-color-thumb;
-		color: @color-thumb;
+/* TOC: Global Selector */
+#toc,
+.toc,
+.toccolours,
+div.thumbinner {
+    border-color: @color-gray;
+    background-color: @background-color-thumb;
+    color: @color-thumb;
 
-		.toctogglelabel,
-		a {
-			color: @color-thumb;
-		}
-	}
+    .toctogglelabel,
+    .tocnumber {
+        color: @color-thumb;
+    }
+    
+    a {
+        color: @color-link;
+    }
 }
 
 .mw-body {
