@@ -83,7 +83,7 @@
     color: transparent;
     position: relative;
     vertical-align: middle;     
-    background-color: #385b82; 
+    background-color: @color-icon-base;
     margin: 0px 4px;
     cursor: pointer;
 
@@ -151,9 +151,9 @@
             left: 0;
             top: 100%;
             z-index: 100;
-            background: #ffffff;
-            border: 1px solid #a2a9b1;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background: @background-color-dropdown;
+            border: 1px solid @border-color-dropdown;
+            box-shadow: 0 2px 5px @shadow-color-dropdown;
             min-width: 230px;
             padding: 5px 0;
             margin-top: 5px;
@@ -178,12 +178,12 @@
             a {
                 display: block;
                 padding: 6px 15px;
-                color: #0645ad;
+                color: @color-link;
                 text-decoration: none;
                 font-size: 0.95em;
 
                 &:hover {
-                    background-color: #eaecf0;
+                    background-color: @background-color-dropdown-hover;
                     text-decoration: none;
                 }
             }
