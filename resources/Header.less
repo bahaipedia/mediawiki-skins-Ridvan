@@ -11,14 +11,14 @@
     align-items: center;
 
     #p-sitename a {
-        color: @color-header-text;
+        color: @color-sitename-text;
         text-decoration: none;
     }
 
     /* MOBILE HEADER LAYOUT */
     @media ( max-width: @max-width-breakpoint-tablet ) {
         padding: 10px;
-        flex-wrap: wrap; /* Allow items to flow to next line */
+        flex-wrap: wrap;
 
         /* 1. Hide the Logo Image (Keep Sitename) */
         #p-logo {
@@ -50,7 +50,7 @@
 /* --- GROUPS OF LINKS --- */
 /* Mobile Only drop-down menus (Sidebar links, Tools, Interwiki/Interlanguage Links) */
 .ridvan-text-menus {
-    display: none; /* Default Hidden for desktop */
+    display: none;
     
     @media ( max-width: @max-width-breakpoint-tablet ) {
         display: flex;
