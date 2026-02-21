@@ -487,4 +487,30 @@ html.ridvan-dark-mode {
         background-color: @background-color-thumb !important;
         color: @color-thumb !important;
     }
+
+   /* File Page Table of Contents */
+    #filetoc {
+        background-color: @background-color-ui-subtle !important;
+        border-color: @border-color-ui-widget !important;
+    }
+
+   /* File Page Page Selector Dropdown & Button */
+    form[name="pageselector"] select,
+    form[name="pageselector"] input[type="submit"] {
+        background-color: @background-color-ui-subtle !important;
+        color: @color-base !important;
+        border: 1px solid @border-color-ui-widget !important;
+        border-radius: 2px;
+    }
+    
+    /* --- E. Image Dimming (Scanned Pages) --- */
+    #file img,
+    .mw-file-element {
+        filter: brightness(0.8) contrast(1.1);
+        transition: filter 0.3s ease;
+    }
+    #file img:hover,
+    .mw-file-element:hover {
+        filter: brightness(1) contrast(1);
+    }
 }
