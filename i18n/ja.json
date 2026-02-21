@@ -10,5 +10,6 @@
 	"czsearch-search-editpage": "ページ「$1」を編集または作成",
 	"czsearch-search-mediasearch": "「$1」に一致するメディアファイルを検索",
 	"czsearch-search-empty-desc": "ページ、メディアなどを検索",
-	"search-redirect": "($1 へ転送)"
+	"search-redirect": "($1 へ転送)",
+	"ridvan-darkmode-toggle": "ダークモード"
 }
