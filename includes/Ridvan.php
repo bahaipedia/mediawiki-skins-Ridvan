@@ -141,7 +141,7 @@ class SkinRidvan extends SkinMustache {
                         'class' => 'mw-list-item',
                         'array-links' => [
                             [
-                                'text' => 'Dark Mode',
+                                'text' => $this->msg( 'ridvan-darkmode-toggle' )->text(),
                                 'array-attributes' => [
                                     [ 'key' => 'href', 'value' => '#' ],
                                     [ 'key' => 'onclick', 'value' => 'toggleRidvanDarkMode(event)' ]
