@@ -10,5 +10,6 @@
 	"czsearch-search-editpage": "Править или создать страницу «$1»",
 	"czsearch-search-mediasearch": "Найти медиафайлы, соответствующие «$1»",
 	"czsearch-search-empty-desc": "Поиск страниц, медиафайлов и многого другого",
-	"search-redirect": "(перенаправляет на $1)"
+	"search-redirect": "(перенаправляет на $1)",
+	"ridvan-darkmode-toggle": "Тёмный режим"
 }
