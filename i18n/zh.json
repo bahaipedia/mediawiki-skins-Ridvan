@@ -10,5 +10,6 @@
 	"czsearch-search-editpage": "编辑或创建页面“$1”",
 	"czsearch-search-mediasearch": "搜索匹配“$1”的媒体文件",
 	"czsearch-search-empty-desc": "搜索页面、媒体及更多内容",
-	"search-redirect": "（重定向至$1）"
+	"search-redirect": "重定向至$1",
+	"ridvan-darkmode-toggle": "深色模式"
 }
