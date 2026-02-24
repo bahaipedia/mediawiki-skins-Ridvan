@@ -19,21 +19,32 @@ class SkinRidvan extends SkinMustache {
 		// ---------------------------------------------------------
         // PART 0: INJECT DARK MODE SCRIPT
         // ---------------------------------------------------------
+        // Checks localStorage first, then system preference, preventing "flash of white"
         $script = <<<JS
         <script>
         (function() {
-            // Apply saved preference immediately
-            var isDark = localStorage.getItem('ridvan-dark-mode') === 'true';
+            var html = document.documentElement;
+            var savedTheme = localStorage.getItem('ridvan-dark-mode');
+            var isDark = false;
+
+            if (savedTheme !== null) {
+                // User explicitly set a preference previously
+                isDark = savedTheme === 'true';
+            } else {
+                // No saved preference, use system default
+                isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+
             if (isDark) {
-                document.documentElement.classList.add('ridvan-dark-mode');
+                html.classList.add('ridvan-dark-mode');
             }
             
             // Define the toggle function globally
             window.toggleRidvanDarkMode = function(e) {
                 e.preventDefault();
-                var html = document.documentElement;
-                var isDark = html.classList.toggle('ridvan-dark-mode');
-                localStorage.setItem('ridvan-dark-mode', isDark);
+                var currentlyDark = html.classList.toggle('ridvan-dark-mode');
+                // Save the new explicit choice, overriding system default
+                localStorage.setItem('ridvan-dark-mode', currentlyDark);
             };
         })();
         </script>
