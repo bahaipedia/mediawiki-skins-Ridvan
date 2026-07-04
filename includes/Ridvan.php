@@ -65,8 +65,12 @@ class SkinRidvan extends SkinMustache {
         // ---------------------------------------------------------
         // PART 2: HEADER BUTTONS (ACTIONS)
         // ---------------------------------------------------------
+        $namespaces = $data['data-portlets']['data-associated-pages']['array-items'] 
+            ?? $data['data-portlets']['data-namespaces']['array-items'] 
+            ?? [];
+
         $allPortlets = array_merge(
-            $data['data-portlets']['data-namespaces']['array-items'] ?? [],
+            $namespaces,
             $data['data-portlets']['data-views']['array-items'] ?? [],
             $data['data-portlets']['data-actions']['array-items'] ?? []
         );
