@@ -285,6 +285,29 @@ class SkinRidvan extends SkinMustache {
                 // LOGGED IN
                 $userMenu['label'] = $user->getName();
                 $userMenu['class'] .= ' is-loggedin';
+
+                if ( !isset( $userMenu['array-items'] ) ) {
+                    $userMenu['array-items'] = [];
+                }
+
+                // Inject the "User page" link at the top
+                $userPageItem = [
+                    'id' => 'pt-userpage-link',
+                    'class' => 'mw-list-item ridvan-userpage-item',
+                    'array-links' => [
+                        [
+                            'text' => $this->msg( 'nstab-user' )->text(),
+                            'array-attributes' => [
+                                [
+                                    'key' => 'href',
+                                    'value' => $user->getUserPage()->getLocalURL()
+                                ]
+                            ]
+                        ]
+                    ]
+                ];
+                array_unshift( $userMenu['array-items'], $userPageItem );
+
             } else {
                 // ANONYMOUS
                 $userMenu['class'] .= ' is-anon';
