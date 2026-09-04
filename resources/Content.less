@@ -613,10 +613,14 @@ html.ridvan-dark-mode {
         background-color: @background-color-input !important;
         color: @color-input-text !important;
         border-color: @border-color-input !important;
-        color-scheme: dark; /* Fixes native dropdown arrows in dark mode */
+        color-scheme: dark;
         
         /* If Codex is using a background SVG for the arrow, this replaces it with a light gray one */
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M1 3.5l5 5 5-5' fill='none' stroke='%23d1d5db' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    }
+    .cdx-table__header__caption,
+    .cdx-table__table th {
+        color: @color-base !important;
     }
 
     /* --- G. Metadata Tables --- */
@@ -679,11 +683,5 @@ html.ridvan-dark-mode {
     }
 	.mw-widget-calendarWidget-day-additional {
         color: @color-gutter-text !important;
-    }
-
-	/* --- K. Codex Tables --- */
-    .cdx-table__header__caption,
-    .cdx-table__table th {
-        color: @color-base !important;
     }
 }
