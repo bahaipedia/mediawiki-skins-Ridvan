@@ -285,33 +285,32 @@ class SkinRidvan extends SkinMustache {
                 // LOGGED IN
                 $userMenu['label'] = $user->getName();
                 $userMenu['class'] .= ' is-loggedin';
-
-                if ( !isset( $userMenu['array-items'] ) ) {
-                    $userMenu['array-items'] = [];
-                }
-
-                // Inject the "User page" link at the top
-                $userPageItem = [
-                    'id' => 'pt-userpage',
-                    'class' => 'mw-list-item',
-                    'array-links' => [
-                        [
-                            'text' => $this->msg( 'nstab-user' )->text(),
-                            'array-attributes' => [
-                                [
-                                    'key' => 'href',
-                                    'value' => $user->getUserPage()->getLocalURL()
-                                ]
-                            ]
-                        ]
-                    ]
-                ];
-                array_unshift( $userMenu['array-items'], $userPageItem );
-
             } else {
                 // ANONYMOUS
                 $userMenu['class'] .= ' is-anon';
             }
+
+            if ( !isset( $userMenu['array-items'] ) ) {
+                $userMenu['array-items'] = [];
+            }
+
+            // Inject the "User page" link at the top for EVERYONE (Logged in & Anon)
+            $userPageItem = [
+                'id' => 'pt-userpage', 
+                'class' => 'mw-list-item',
+                'array-links' => [
+                    [
+                        'text' => $this->msg( 'nstab-user' )->text(),
+                        'array-attributes' => [
+                            [
+                                'key' => 'href',
+                                'value' => $user->getUserPage()->getLocalURL()
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+            array_unshift( $userMenu['array-items'], $userPageItem );
         }
 
         return $data;
