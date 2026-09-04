@@ -292,8 +292,8 @@ class SkinRidvan extends SkinMustache {
 
                 // Inject the "User page" link at the top
                 $userPageItem = [
-                    'id' => 'pt-userpage-link',
-                    'class' => 'mw-list-item ridvan-userpage-item',
+                    'id' => 'pt-userpage',
+                    'class' => 'mw-list-item',
                     'array-links' => [
                         [
                             'text' => $this->msg( 'nstab-user' )->text(),
