@@ -683,4 +683,32 @@ html.ridvan-dark-mode {
 	.mw-widget-calendarWidget-day-additional {
         color: @color-gutter-text !important;
     }
+
+    /* --- K. MediaUploader Extension --- */
+    #mediauploader-steps {
+        background-color: @background-color-card !important;
+        border-color: @border-color-ui-widget !important;
+
+        li {
+            background-color: @background-color-ui-subtle !important;
+            color: @color-base !important;
+        }
+
+        li.arrow::before {
+            border-left-color: @background-color-card !important;
+        }
+
+        li.arrow::after {
+            border-left-color: @background-color-ui-subtle !important;
+        }
+
+        li.head {
+            background-color: @background-color-progressive-subtle !important;
+            color: @color-link !important;
+        }
+
+        li.head.arrow::after {
+            border-left-color: @background-color-progressive-subtle !important;
+        }
+    }
 }
