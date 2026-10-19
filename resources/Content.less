@@ -478,6 +478,15 @@ pre, code, .mw-code {
    ========================================================================== */
 
 html.ridvan-dark-mode {
+	/* Native browser checkboxes, radios, and scrollbars */
+    color-scheme: dark;
+
+    input[type='radio'],
+    input[type='checkbox'] {
+        color-scheme: dark;
+        accent-color: @background-color-btn-save;
+    }
+
     /* --- A. Diff View --- */
     table.diff {
         background-color: transparent;
@@ -1091,14 +1100,9 @@ html.ridvan-dark-mode {
         border-top: none !important;
     }
 
-    /* Invert black OOUI directional/action icons & indicators in dark mode */
-    .oo-ui-indicatorElement-indicator,
-    .oo-ui-icon-first,
-    .oo-ui-icon-previous,
-    .oo-ui-icon-next,
-    .oo-ui-icon-last,
-    .oo-ui-icon-pushPin,
-    .oo-ui-icon-info {
+    /* Invert all black OOUI icons & indicators in dark mode */
+    .oo-ui-iconElement-icon,
+    .oo-ui-indicatorElement-indicator {
         &:not(.oo-ui-image-progressive):not(.oo-ui-image-destructive):not(.oo-ui-image-invert) {
             filter: invert(1) brightness(1.2);
         }
