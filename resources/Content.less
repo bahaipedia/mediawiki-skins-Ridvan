@@ -139,6 +139,133 @@ div.thumbinner {
         padding-left: 2px;
         padding-right: 2px;
     }
+
+    /* Fix table of contents headings appearing on a new line from their numbering */
+    .tocnumber, .toctext {
+        display: inline !important;
+    }
+}
+
+/* wikitable/prettytable class for skinning normal tables */
+table.wikitable,
+table.prettytable {
+    margin: 1em 1em 1em 0;
+    background: @background-color-ui-subtle;
+    border: 1px @border-color-ui-widget solid;
+    border-collapse: collapse;
+
+    th, td {
+        border: 1px @border-color-ui-widget solid;
+        padding: 0.2em;
+    }
+
+    th {
+        background: @background-color-interactive-subtle;
+        text-align: center;
+    }
+
+    caption {
+        margin-left: inherit;
+        margin-right: inherit;
+    }
+}
+
+/* Put a checker background at the image description page only visible if the image has transparent background */
+/* You may want to clear the gallery background for the main namespace on other projects as galleries are used in articles */
+#file img,
+.gallerybox .thumb img {
+    background: url("https://bahai.media/images/5/5d/Checker-16x16.png") repeat;
+}
+
+/* File namespace core elements */
+.mw-filepage-resolutioninfo {
+    display: none;
+}
+
+/* Settings for the bar which appears on top of a file which is part of a numbered series (File1, File2, etc)*/
+#filetoc {
+    display: none;
+
+    li {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
+    li:last-child,
+    li:nth-child(1),
+    li:nth-child(2),
+    li:nth-child(3) {
+        display: none;
+    }
+}
+
+#prevnextlinks-download {
+    display: none !important;
+}
+
+.fullMedia {
+    display: none;
+}
+
+/* Fix File history section on file pages */
+@media (max-width: 600px) {
+    .wikitable.filehistory,
+    .mw_metadata {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+/* Responsive MediaWiki Galleries & Thumbnails - 500px */
+@media (max-width: 500px) {
+    /* Galleries */
+    .mw-body li.gallerybox {
+        width: 100% !important;
+    }
+    .mw-body li.gallerybox .thumb {
+        width: unset !important;
+        height: unset !important;
+    }
+    /* Thumbnails */
+    .mw-body .thumb,
+    .mw-body .thumbimage,
+    .mw-body figure[typeof~="mw:File"],
+    .mw-body figure[typeof~="mw:File/Thumb"],
+    .mw-body figure[typeof~="mw:File/Frame"] {
+        float: none !important; /* Make images take 100% of screen on small displays */
+        margin: 0 auto !important;
+    }
+    .mw-body .thumb img,
+    .mw-body .thumbimage img,
+    .mw-body .gallerybox .thumb img.mw-file-element,
+    .mw-body figure[typeof~="mw:File"] > :not(figcaption) img.mw-file-element,
+    .mw-body figure[typeof~="mw:File/Thumb"] > :not(figcaption) img.mw-file-element,
+    .mw-body figure[typeof~="mw:File/Frame"] > :not(figcaption) img.mw-file-element { /* allows image thumbs to respond at small widths */
+        width: unset !important;
+        height: unset !important;
+        max-width: 97%; /* allows the image to fit inside the thumb border */
+        margin: 1.5%;
+    }
+}
+
+/* Makes redirects appear in italics on [[Special:Allpages]] */
+.allpagesredirect {
+    font-style: italic;
+}
+
+/* Bytecounter colours (RecentChanges / Watchlist) */
+strong.mw-plusminus-neg,
+span.mw-plusminus-neg {
+    color: @border-color-error;
+}
+span.mw-plusminus-pos {
+    color: var(--background-color-diff-change-add);
+}
+
+/* Show a border for warning messages on Special:Upload */
+#wpDestFile-warning ul {
+    border: solid @border-color-error 1px;
+    padding: 1.5em;
 }
 
 /* ==========================================================================
