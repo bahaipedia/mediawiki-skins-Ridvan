@@ -211,10 +211,67 @@ textarea,
 }
 
 /* Special Character Buttons */
-.mw-edittools-section input[type="button"] {
-    background-color: @background-color-ui-subtle !important;
-    color: @color-base !important;
+.mw-charinsert-buttons {
+    margin-top: 8px;
+    border: 1px solid @border-color-toolbar;
+    padding: 2px 4px 4px;
+    font-size: 1.1em;
+    text-align: center;
+
+    a {
+        background-color: @background-color-ui-subtle !important;
+        color: @color-text-main;
+        border: thin @color-link outset;
+        padding: 0 1px 2px;
+        font-size: 0.9em;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+            background-color: @background-color-card;
+            color: @color-link;
+        }
+
+        &:active {
+            background-color: @background-color-interactive-subtle--active;
+            border-style: inset;
+        }
+    }
+}
+
+.client-js .mw-edittools-section {
+    display: inline;
+
+    input[type="button"] {
+        background-color: @background-color-ui-subtle !important;
+        color: @color-base !important;
+        border: 1px solid @border-color-ui-widget !important;
+        margin-left: 1px;
+        border-radius: 2px;
+        padding: 1px 6px;
+        font-size: 0.9em;
+        /* Apply pointer cursor to all interactive elements. */
+        cursor: pointer;
+
+        &:hover {
+            background-color: @background-color-card !important;
+            color: @color-link !important;
+        }
+
+        &:active {
+            background-color: @background-color-interactive-subtle--active !important;
+            color: @color-text-main !important;
+        }
+    }
+}
+
+/* Save/Preview Buttons */
+#wpSave {
+    background-color: @background-color-btn-save !important;
+    color: @color-btn-text !important;
     border: 1px solid @border-color-ui-widget !important;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* Save/Preview Buttons */
