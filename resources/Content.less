@@ -325,11 +325,7 @@ span.mw-plusminus-pos {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Fix Buttons and Legend
-.oo-ui-buttonElement-framed > .oo-ui-buttonElement-button {
-    background-color: @background-color-ui-widget !important;
-    color: @color-base !important;
-} This is used on Special:Search, elsewhere? if it's needed we need to fix those buttons*/
+/* Fix Legend */
 .mw-changeslist-legend {
     background-color: @background-color-base !important;
     color: @color-base !important;
@@ -437,6 +433,7 @@ pre, code, .mw-code {
 .hl-linenos a {
     color: @color-gutter-text !important;
 }
+
 /* Line Highlighting */
 .mw-highlight .hll,
 .hll {
@@ -475,6 +472,11 @@ pre, code, .mw-code {
     background-color: @background-color-ui-subtle;
     color: @color-base;
     outline: 1px dashed @border-color-ui-widget;
+}
+
+/* Fix hidden settings dropdown on Special:Notifications */
+.mw-echo-ui-notificationsInboxWidget-toolbarWrapper { 
+	z-index: auto !important; 
 }
 
 /* ==========================================================================
