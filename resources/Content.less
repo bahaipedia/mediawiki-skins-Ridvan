@@ -1454,7 +1454,7 @@ html.ridvan-dark-mode {
         background: @background-color-hover !important;
     }
 
-    /* Extension:Wikibase (Edit View on bahaidata.org) */
+    /* Extension:Wikibase */
     .wikibase-referenceview.wb-edit > .wikibase-referenceview-heading {
         background-color: @background-color-interactive-selected !important;
         color: @color-text-main !important;
@@ -1479,9 +1479,27 @@ html.ridvan-dark-mode {
         color: @color-base !important;
     }
 
-    /* Extension:Echo Notification Badge (Read State) */
+    /* Extension:Echo */
     .mw-echo-notifications-badge.mw-echo-notifications-badge-all-read {
         filter: invert(1) brightness(0.6) !important;
+    }
+
+	.mw-echo-ui-notificationItemWidget {
+        background-color: @background-color-ui-subtle !important;
+        border-color: @border-color-base !important;
+        color: @color-base !important;
+
+        &:hover {
+            background-color: @background-color-hover !important;
+        }
+    }
+
+    .mw-echo-ui-notificationItemWidget-unread {
+        background-color: @background-color-card !important;
+    }
+
+    .mw-echo-ui-notificationItemWidget-content-message-header {
+        color: @color-base !important;
     }
 
     /* ======================================================================
