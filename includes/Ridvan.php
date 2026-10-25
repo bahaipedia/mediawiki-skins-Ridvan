@@ -267,6 +267,27 @@ class SkinRidvan extends SkinMustache {
         $data['ridvan-mobile-links-label'] = $this->msg('ridvan-mobile-links-label')->text();
         $data['ridvan-has-mobile-links'] = !empty($mobileLinks);
 
+        $footerPortlets = [];
+        if ( !empty( $hybridMenu ) ) {
+            $footerPortlets[] = [
+                'id' => 'actions',
+                'label' => $this->msg( 'actions' )->text(),
+                'array-items' => $hybridMenu
+            ];
+        }
+        if ( !empty( $mobileTools ) ) {
+            $footerPortlets[] = [
+                'id' => 'tb',
+                'label' => $mobileToolsLabel,
+                'array-items' => $mobileTools
+            ];
+        }
+        $data['ridvan-footer-portlets'] = $footerPortlets;
+        $data['ridvan-footer-columns'] = $this->getFooterColumns();
+
+        $footerAboutMsg = $this->msg( 'footer-about' )->inContentLanguage();
+        $data['html-ridvan-footer-about'] = $footerAboutMsg->isDisabled() ? '' : $footerAboutMsg->parse();
+
         // ---------------------------------------------------------
         // PART 6: USER MENU & STATE
         // ---------------------------------------------------------
@@ -310,5 +331,80 @@ class SkinRidvan extends SkinMustache {
         }
 
         return $data;
+    }
+
+    /**
+     * Parses MediaWiki:Footer-menu into columns and links.
+     * Supports "** Heading" with "* Target|Label" items (Bahaipedia style).
+     */
+    private function getFooterColumns(): array {
+        $msg = $this->msg( 'footer-menu' )->inContentLanguage();
+        if ( $msg->isDisabled() ) {
+            return [];
+        }
+
+        $lines = explode( "\n", $msg->plain() );
+        $columns = [];
+        $currentColumn = null;
+
+        foreach ( $lines as $line ) {
+            $line = trim( $line );
+            if ( $line === '' ) {
+                continue;
+            }
+
+            // "** Section Heading"
+            if ( strpos( $line, '**' ) === 0 ) {
+                if ( $currentColumn !== null ) {
+                    $columns[] = $currentColumn;
+                }
+                $headingRaw = trim( substr( $line, 2 ) );
+                $parts = array_map( 'trim', explode( '|', $headingRaw, 2 ) );
+                $label = count( $parts ) === 2 ? $parts[1] : $parts[0];
+
+                $currentColumn = [
+                    'html-id' => 'p-footer-' . Sanitizer::escapeIdForAttribute( $label ),
+                    'label' => $label,
+                    'array-items' => []
+                ];
+            }
+            // "* Target|Label" or "* Target"
+            elseif ( strpos( $line, '*' ) === 0 && $currentColumn !== null ) {
+                $itemRaw = trim( substr( $line, 1 ) );
+                if ( $itemRaw === '' ) {
+                    continue;
+                }
+
+                $parts = array_map( 'trim', explode( '|', $itemRaw, 2 ) );
+                $target = $parts[0];
+                $text = count( $parts ) === 2 ? $parts[1] : $target;
+
+                if ( preg_match( '/^(https?:)?\/\//i', $target ) ) {
+                    $href = $target;
+                } else {
+                    $title = \MediaWiki\Title\Title::newFromText( $target );
+                    $href = $title ? $title->getLocalURL() : '#';
+                }
+
+                $currentColumn['array-items'][] = [
+                    'id' => 'f-' . Sanitizer::escapeIdForAttribute( $text ),
+                    'class' => 'mw-list-item',
+                    'array-links' => [
+                        [
+                            'text' => $text,
+                            'array-attributes' => [
+                                [ 'key' => 'href', 'value' => $href ]
+                            ]
+                        ]
+                    ]
+                ];
+            }
+        }
+
+        if ( $currentColumn !== null ) {
+            $columns[] = $currentColumn;
+        }
+
+        return $columns;
     }
 }
