@@ -1,12 +1,60 @@
 {{! `role` is unnecessary but kept to support selectors in any gadgets or user styles and
 	to mitigate a VoiceOver bug. }}
 <footer id="footer" class="mw-footer" role="contentinfo" {{{html-user-language-attributes}}}>
-	{{#data-footer}}
-	{{!}}{{#data-icons}}{{>FooterList}}{{/data-icons}}
-	{{!}}<div id="footer-list">
-	{{#data-last-modified}}{{>LastModifiedLine}}{{/data-last-modified}}
-	<div id="copyright">{{#data-copyright}}{{{html}}}{{/data-copyright}}</div>
-	{{!}}{{#data-places}}{{>FooterList}}{{/data-places}}
-	{{!}}</div>
-	{{/data-footer}}
+    <div class="ridvan-footer-inner">
+        {{! Tier 1: Multi-Column Digital Library Directory }}
+        <div class="ridvan-footer-directory">
+            <div class="ridvan-footer-brand">
+                <div class="ridvan-footer-sitename">{{msg-sitetitle}}</div>
+                {{#html-ridvan-footer-about}}
+                <div class="ridvan-footer-desc">{{{html-ridvan-footer-about}}}</div>
+                {{/html-ridvan-footer-about}}
+            </div>
+
+            <div class="ridvan-footer-columns">
+                {{#ridvan-footer-columns}}
+                <div class="ridvan-footer-column" id="footer-{{html-id}}">
+                    <h4 class="ridvan-footer-heading">{{label}}</h4>
+                    <ul class="ridvan-footer-links">
+                        {{#array-items}}{{>ListItem}}{{/array-items}}
+                    </ul>
+                </div>
+                {{/ridvan-footer-columns}}
+            </div>
+        </div>
+
+        {{! Tier 2: Sub-Footer Colophon & Page Tools }}
+        <div class="ridvan-footer-subbar">
+            <div class="ridvan-colophon-meta">
+                {{#data-footer}}
+                <div id="footer-list" class="ridvan-footer-info">
+                    {{#data-places}}{{>FooterList}}{{/data-places}}
+                    <div id="copyright">{{#data-copyright}}{{{html}}}{{/data-copyright}}</div>
+                </div>
+                {{#data-last-modified}}{{>LastModifiedLine}}{{/data-last-modified}}
+                {{/data-footer}}
+            </div>
+
+            <div class="ridvan-footer-right">
+                <div class="ridvan-footer-tools">
+                    {{#ridvan-footer-portlets}}
+                        <div class="ridvan-dropup">
+                            <input type="checkbox" id="cb-foot-{{id}}" class="ridvan-dropup-checkbox">
+                            <label for="cb-foot-{{id}}" class="ridvan-dropup-button">{{label}} <span class="dropup-caret">▴</span></label>
+                            <div class="ridvan-dropup-body">
+                                <ul>
+                                    {{#array-items}}{{>ListItem}}{{/array-items}}
+                                </ul>
+                            </div>
+                        </div>
+                    {{/ridvan-footer-portlets}}
+                    <a href="#" class="ridvan-back-to-top">↑ Top</a>
+                </div>
+
+                {{#data-footer}}
+                    {{#data-icons}}{{>FooterList}}{{/data-icons}}
+                {{/data-footer}}
+            </div>
+        </div>
+    </div>
 </footer>
