@@ -267,11 +267,9 @@ class SkinRidvan extends SkinMustache {
         $data['ridvan-mobile-links-label'] = $this->msg('ridvan-mobile-links-label')->text();
         $data['ridvan-has-mobile-links'] = !empty($mobileLinks);
 
-        $footerActions = array_merge(
-            $editButton ? [ $editButton ] : [],
-            $talkButton ? [ $talkButton ] : [],
-            $hybridMenu
-        );
+        $footerActions = array_values( array_filter( $allPortlets, function( $item ) {
+            return ( $item['id'] ?? '' ) !== 'ca-view';
+        } ) );
 
         $footerPortlets = [];
         if ( !empty( $footerActions ) ) {
