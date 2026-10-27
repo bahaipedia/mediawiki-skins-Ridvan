@@ -1155,7 +1155,7 @@ html.ridvan-dark-mode {
        7. CODEX DESIGN SYSTEM (Buttons, Inputs, Selects, Tabs, Tables)
        ====================================================================== */
 
-    /* Standard Codex Buttons (e.g., History page action buttons) */
+    /* Standard, Quiet, and Progressive Codex Buttons */
     .cdx-button:enabled,
     .cdx-button.cdx-button--fake-button--enabled {
         background-color: @background-color-ui-widget !important;
@@ -1167,33 +1167,31 @@ html.ridvan-dark-mode {
             color: @color-text-main !important;
             border-color: @border-color-ui-widget !important;
         }
-    }
 
-    /* Quiet Codex Buttons (borderless until hovered) */
-    .cdx-button:enabled.cdx-button--weight-quiet,
-    .cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-quiet {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        color: @color-base !important;
+        /* Quiet Codex Buttons (borderless until hovered) */
+        &.cdx-button--weight-quiet {
+            background-color: transparent !important;
+            border-color: transparent !important;
+            color: @color-base !important;
 
-        &:hover {
-            background-color: @background-color-hover !important;
-            color: @color-text-main !important;
-            mix-blend-mode: normal !important;
+            &:hover {
+                background-color: @background-color-hover !important;
+                color: @color-text-main !important;
+                mix-blend-mode: normal !important;
+            }
         }
-    }
 
-    /* Progressive Primary Codex Buttons (e.g., Special:UserLogin "Log in") */
-    .cdx-button:enabled.cdx-button--action-progressive,
-    .cdx-button.cdx-button--fake-button--enabled.cdx-button--action-progressive {
-        background-color: @background-color-btn-save !important;
-        color: @color-btn-text !important;
-        border-color: @background-color-btn-save !important;
-
-        &:hover {
+        /* Progressive Primary Codex Buttons (e.g., Special:UserLogin "Log in") */
+        &.cdx-button--action-progressive {
             background-color: @background-color-btn-save !important;
             color: @color-btn-text !important;
-            border-color: @color-link !important;
+            border-color: @background-color-btn-save !important;
+
+            &:hover {
+                background-color: @background-color-btn-save !important;
+                color: @color-btn-text !important;
+                border-color: @color-link !important;
+            }
         }
     }
 
@@ -1261,39 +1259,42 @@ html.ridvan-dark-mode {
     }
 
     /* RecentChanges / Watchlist Filters Menu */
-    .mw-rcfilters-ui-filterMenuHeaderWidget-header {
-        background-color: @background-color-ui-subtle !important;
-        border-bottom: 1px solid @border-color-ui-widget !important;
-    }
+    .mw-rcfilters-ui {
+        &-filterMenuHeaderWidget-header {
+            background-color: @background-color-ui-subtle !important;
+            border-bottom: 1px solid @border-color-ui-widget !important;
+        }
 
-    .mw-rcfilters-ui-filterMenuSectionOptionWidget {
-        background-color: @background-color-editor-bar !important; 
-        color: @color-base !important;
-    }
+        &-filterMenuSectionOptionWidget {
+            background-color: @background-color-editor-bar !important; 
+            color: @color-base !important;
+        }
 
-    .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-selected {
-        background-color: @background-color-progressive-subtle !important;
-        color: @color-base !important;
-    }
+        &-itemMenuOptionWidget {
+            &.oo-ui-optionWidget-selected {
+                background-color: @background-color-progressive-subtle !important;
+                color: @color-base !important;
+            }
+            &-label-title {
+                color: @color-dropdown-text !important;
+            }
+        }
 
-    .mw-rcfilters-ui-itemMenuOptionWidget-label-title {
-        color: @color-dropdown-text !important;
-    }
+        &-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
+        &-itemMenuOptionWidget.oo-ui-optionWidget-highlighted {
+            background-color: @background-color-dropdown-hover !important;
+            color: @color-dropdown-text !important;
+        }
 
-    .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted.oo-ui-optionWidget-highlighted,
-    .mw-rcfilters-ui-itemMenuOptionWidget.oo-ui-optionWidget-highlighted {
-        background-color: @background-color-dropdown-hover !important;
-        color: @color-dropdown-text !important;
-    }
+        &-menuSelectWidget-footer {
+            background-color: @background-color-ui-subtle !important;
+            border-top: 1px solid @border-color-ui-widget !important;
+        }
 
-    .mw-rcfilters-ui-menuSelectWidget-footer {
-        background-color: @background-color-ui-subtle !important;
-        border-top: 1px solid @border-color-ui-widget !important;
-    }
-
-    .mw-rcfilters-ui-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
-        background-color: @background-color-dropdown !important;
-        color: @color-dropdown-text !important;
+        &-filterMenuOptionWidget.oo-ui-flaggedElement-muted:not(.oo-ui-optionWidget-selected) {
+            background-color: @background-color-dropdown !important;
+            color: @color-dropdown-text !important;
+        }
     }
 
     /* Special:Search (Interwiki Results & AdvancedSearch) */
@@ -1301,20 +1302,22 @@ html.ridvan-dark-mode {
         color: @color-text-main !important;
     }
 
-    .mw-advancedSearch-fieldContainer,
-    .mw-advancedSearch-namespace-selection {
-        background: @background-color-ui-subtle !important;
-        border-color: @border-color-ui-widget !important;
-    }
+    .mw-advancedSearch {
+        &-fieldContainer,
+        &-namespace-selection {
+            background: @background-color-ui-subtle !important;
+            border-color: @border-color-ui-widget !important;
+        }
 
-    .mw-advancedSearch-fieldContainer .oo-ui-labelElement > .oo-ui-fieldsetLayout-header > .oo-ui-labelElement-label {
-        background: @background-color-ui-subtle !important;
-        color: @color-base !important;
-    }
+        &-fieldContainer .oo-ui-labelElement > .oo-ui-fieldsetLayout-header > .oo-ui-labelElement-label {
+            background: @background-color-ui-subtle !important;
+            color: @color-base !important;
+        }
 
-    .mw-advancedSearch-expandablePane-button.oo-ui-widget-enabled.oo-ui-buttonWidget > .oo-ui-buttonElement-button:hover {
-        background-color: @background-color-editor-bar !important;
-        color: @color-base !important;
+        &-expandablePane-button.oo-ui-widget-enabled.oo-ui-buttonWidget > .oo-ui-buttonElement-button:hover {
+            background-color: @background-color-editor-bar !important;
+            color: @color-base !important;
+        }
     }
 
     /* ======================================================================
