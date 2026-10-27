@@ -619,10 +619,10 @@ html.ridvan-dark-mode {
     .mw-file-element {
         filter: brightness(0.8) contrast(1.1);
         transition: filter 0.3s ease;
-    }
-    #file img:hover,
-    .mw-file-element:hover {
-        filter: brightness(1) contrast(1);
+
+        &:hover {
+            filter: brightness(1) contrast(1);
+        }
     }
 
     /* Parsoid/Core Image Thumbnails and Frames */
@@ -631,25 +631,21 @@ html.ridvan-dark-mode {
         border-color: @border-color-base !important;
         background-color: @background-color-thumb !important;
         color: @color-thumb !important;
-    }
 
-    figure[typeof~='mw:File/Thumb'] > figcaption,
-    figure[typeof~='mw:File/Frame'] > figcaption {
-        border: 1px solid @border-color-base !important;
-        border-top: 0 !important;
-    }
+        > figcaption {
+            border: 1px solid @border-color-base !important;
+            border-top: 0 !important;
+        }
 
-    /* Inner Image Elements */
-    figure[typeof~='mw:File/Thumb'] > :not( figcaption ) .mw-file-element, 
-    figure[typeof~='mw:File/Frame'] > :not( figcaption ) .mw-file-element {
-        background-color: @background-color-thumb !important;
-        border: 1px solid @border-color-base !important;
-    }
+        /* Inner Image Elements */
+        > :not( figcaption ) .mw-file-element {
+            background-color: @background-color-thumb !important;
+            border: 1px solid @border-color-base !important;
 
-    figure[typeof~='mw:File/Thumb'] > :not( figcaption ) .mw-file-element:not( .mw-broken-media ), 
-    figure[typeof~='mw:File/Frame'] > :not( figcaption ) .mw-file-element:not( .mw-broken-media ) {
-        background-color: @background-color-thumb !important;
-        color: @color-base !important;
+            &:not( .mw-broken-media ) {
+                color: @color-base !important;
+            }
+        }
     }
 
     /* Traditional MediaWiki Galleries */
@@ -665,12 +661,14 @@ html.ridvan-dark-mode {
     }
 
     /* Multi-page File (PDF/DjVu) Page Selector Dropdown & Submit Button */
-    form[name="pageselector"] select,
-    form[name="pageselector"] input[type="submit"] {
-        background-color: @background-color-ui-subtle !important;
-        color: @color-base !important;
-        border: 1px solid @border-color-ui-widget !important;
-        border-radius: 2px;
+    form[name="pageselector"] {
+        select,
+        input[type="submit"] {
+            background-color: @background-color-ui-subtle !important;
+            color: @color-base !important;
+            border: 1px solid @border-color-ui-widget !important;
+            border-radius: 2px;
+        }
     }
 
     /* ======================================================================
@@ -713,27 +711,26 @@ html.ridvan-dark-mode {
     }
 
     /* RevisionSlider container & interactive bar chart */
-    .mw-revslider-container {
-        border-color: @border-color-ui-widget !important;
-    }
+    .mw-revslider {
+        &-container {
+            border-color: @border-color-ui-widget !important;
+        }
+        &-slider-wrapper {
+            border-top: none !important;
+        }
+        &-toggle-button {
+            background-color: @background-color-ui-subtle !important;
+            border: 1px solid @border-color-base !important;
+            border-radius: 2px;
+        }
+        &-revision {
+            background-color: @border-color-ui-widget !important;
+            border-color: @border-color-ui-widget !important;
 
-    .mw-revslider-slider-wrapper {
-        border-top: none !important;
-    }
-
-    .mw-revslider-toggle-button {
-        background-color: @background-color-ui-subtle !important;
-        border: 1px solid @border-color-base !important;
-        border-radius: 2px;
-    }
-
-    .mw-revslider-revision {
-        background-color: @border-color-ui-widget !important;
-        border-color: @border-color-ui-widget !important;
-    }
-
-    .mw-revslider-revision-wrapper-hovered {
-        background-color: @background-color-hover !important;
+            &-wrapper-hovered {
+                background-color: @background-color-hover !important;
+            }
+        }
     }
 
     /* ======================================================================
@@ -1064,36 +1061,42 @@ html.ridvan-dark-mode {
     }
 
     /* OOUI Checkboxes */
-    .oo-ui-checkboxInputWidget [type='checkbox'] + span {
-        background-color: @background-color-input !important;
-        border-color: @border-color-input !important;
-    }
+    .oo-ui-checkboxInputWidget {
+        [type='checkbox'] + span {
+            background-color: @background-color-input !important;
+            border-color: @border-color-input !important;
+        }
 
-    .oo-ui-checkboxInputWidget.oo-ui-widget-enabled [type='checkbox']:hover + span {
-        background-color: @background-color-hover !important;
-        border-color: @color-link !important;
-    }
-
-    .oo-ui-checkboxInputWidget.oo-ui-widget-enabled [type='checkbox']:checked + span,
-    .oo-ui-checkboxInputWidget.oo-ui-widget-enabled [type='checkbox']:checked:hover + span {
-        background-color: @background-color-btn-save !important;
-        border-color: @background-color-btn-save !important;
+        &.oo-ui-widget-enabled [type='checkbox'] {
+            &:hover + span {
+                background-color: @background-color-hover !important;
+                border-color: @color-link !important;
+            }
+            &:checked + span,
+            &:checked:hover + span {
+                background-color: @background-color-btn-save !important;
+                border-color: @background-color-btn-save !important;
+            }
+        }
     }
 
     /* OOUI Radio Buttons */
-    .oo-ui-radioInputWidget [type='radio'] + span {
-        background-color: @background-color-input !important;
-        border-color: @border-color-input !important;
-    }
+    .oo-ui-radioInputWidget {
+        [type='radio'] + span {
+            background-color: @background-color-input !important;
+            border-color: @border-color-input !important;
+        }
 
-    .oo-ui-radioInputWidget.oo-ui-widget-enabled [type='radio']:hover + span {
-        background-color: @background-color-hover !important;
-        border-color: @color-link !important;
-    }
-
-    .oo-ui-radioInputWidget.oo-ui-widget-enabled [type='radio']:checked + span,
-    .oo-ui-radioInputWidget.oo-ui-widget-enabled [type='radio']:checked:hover + span {
-        border-color: @background-color-btn-save !important;
+        &.oo-ui-widget-enabled [type='radio'] {
+            &:hover + span {
+                background-color: @background-color-hover !important;
+                border-color: @color-link !important;
+            }
+            &:checked + span,
+            &:checked:hover + span {
+                border-color: @background-color-btn-save !important;
+            }
+        }
     }
 
     /* OOUI Dropdown Handles */
