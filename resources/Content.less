@@ -413,18 +413,20 @@ textarea,
 }
 
 /* Save/Preview Buttons */
+#wpSave,
+#wpPreview,
+#wpDiff {
+    border: 1px solid @border-color-ui-widget !important;
+    cursor: pointer;
+}
 #wpSave {
     background-color: @background-color-btn-save !important;
     color: @color-btn-text !important;
-    border: 1px solid @border-color-ui-widget !important;
-    cursor: pointer;
 }
 #wpPreview,
 #wpDiff {
     background-color: @background-color-ui-subtle !important;
     color: @color-base !important;
-    border: 1px solid @border-color-ui-widget !important;
-    cursor: pointer;
 }
 
 /* Code & Pre Blocks (Generic) */
@@ -438,10 +440,10 @@ pre, code, .mw-code {
     background-color: @background-color-gutter !important;
     color: @color-gutter-text !important;
     border-right: 1px solid @border-color-code !important;
-}
-.mw-highlight .linenos a,
-.hl-linenos a {
-    color: @color-gutter-text !important;
+
+    a {
+        color: @color-gutter-text !important;
+    }
 }
 
 /* Line Highlighting */
@@ -456,9 +458,10 @@ pre, code, .mw-code {
     background-color: @background-color-toolbar !important;
     border-bottom: 1px solid @border-color-toolbar !important;
     box-shadow: none !important; 
-}
-.wikiEditor-ui-toolbar .group {
-    border-right: 1px solid @border-color-toolbar !important;
+
+    .group {
+        border-right: 1px solid @border-color-toolbar !important;
+    }
 }
 
 /* Codex Messages (Warnings) */
@@ -508,13 +511,12 @@ html.ridvan-dark-mode {
     }
 
     /* Override Chrome/Edge light-blue/gray autofill background on Login & Forms */
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px @background-color-input inset !important;
-        -webkit-text-fill-color: @color-input-text !important;
-        caret-color: @color-input-text !important;
+    input:-webkit-autofill {
+        &, &:hover, &:focus, &:active {
+            -webkit-box-shadow: 0 0 0 30px @background-color-input inset !important;
+            -webkit-text-fill-color: @color-input-text !important;
+            caret-color: @color-input-text !important;
+        }
     }
 
     /* ======================================================================
@@ -580,14 +582,16 @@ html.ridvan-dark-mode {
     }
 
     /* EXIF Metadata tables on File description pages */
-    .mw_metadata th {
-        background-color: @background-color-ui-subtle !important;
-        color: @color-base !important;
-        border-color: @border-color-base !important;
-    }
-    .mw_metadata td {
-        border-color: @border-color-base !important;
-        background-color: transparent !important;
+    .mw_metadata {
+        th {
+            background-color: @background-color-ui-subtle !important;
+            color: @color-base !important;
+            border-color: @border-color-base !important;
+        }
+        td {
+            border-color: @border-color-base !important;
+            background-color: transparent !important;
+        }
     }
 
     /* HTMLForm CheckMatrix tables (e.g., Special:BotPasswords, Echo Notification Preferences) */
