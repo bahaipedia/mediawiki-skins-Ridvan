@@ -1333,13 +1333,13 @@ html.ridvan-dark-mode {
         }
     }
 
-	.sdms-search-results__details--expanded {
+    .sdms-search-results__details--expanded {
         background-color: @background-color-ui-subtle !important;
         border-color: @border-color-base !important;
         color: @color-base !important;
     }
 
-	.sdms-quick-view__cta {
+    .sdms-quick-view__cta {
         background-color: @background-color-ui-widget !important;
         border-color: @border-color-ui-widget !important;
         color: @color-link !important;
@@ -1349,48 +1349,50 @@ html.ridvan-dark-mode {
         }
     }
 
-    .sd-select__content {
-        background-color: @background-color-ui-subtle !important;
-        border-color: @border-color-ui-widget !important;
-        color: @color-base !important;
-    }
+    .sd-select {
+        &__content {
+            background-color: @background-color-ui-subtle !important;
+            border-color: @border-color-ui-widget !important;
+            color: @color-base !important;
+        }
 
-    .sd-select__handle {
-        color: @color-base !important;
+        &__handle {
+            color: @color-base !important;
 
-        svg {
-            fill: currentColor !important;
+            svg {
+                fill: currentColor !important;
+            }
+        }
+
+        &-menu {
+            background-color: @background-color-dropdown !important;
+            border-color: @border-color-dropdown !important;
+            box-shadow: 0 2px 2px 0 @shadow-color-dropdown !important;
+            color: @color-dropdown-text !important;
+
+            &__list-item {
+                color: @color-dropdown-text !important;
+
+                &--active {
+                    background-color: @background-color-dropdown-hover !important;
+                    color: @color-text-main !important;
+                }
+
+                &--selected {
+                    background-color: @background-color-progressive-subtle !important;
+                    color: @color-text-main !important;
+                }
+
+                &--active&--selected {
+                    color: @color-link !important;
+                }
+            }
         }
     }
 
     .sd-input--pending .sd-input__input input {
         background-image: none !important;
         animation: none !important;
-    }
-
-    .sd-select-menu {
-        background-color: @background-color-dropdown !important;
-        border-color: @border-color-dropdown !important;
-        box-shadow: 0 2px 2px 0 @shadow-color-dropdown !important;
-        color: @color-dropdown-text !important;
-    }
-
-    .sd-select-menu__list-item {
-        color: @color-dropdown-text !important;
-    }
-
-    .sd-select-menu__list-item--active {
-        background-color: @background-color-dropdown-hover !important;
-        color: @color-text-main !important;
-    }
-
-    .sd-select-menu__list-item--selected {
-        background-color: @background-color-progressive-subtle !important;
-        color: @color-text-main !important;
-    }
-
-    .sd-select-menu__list-item--active.sd-select-menu__list-item--selected {
-        color: @color-link !important;
     }
 
     .sdms-audio-result__duration,
@@ -1411,23 +1413,24 @@ html.ridvan-dark-mode {
         li {
             background-color: @background-color-ui-subtle !important;
             color: @color-base !important;
-        }
 
-        li.arrow::before {
-            border-left-color: @background-color-card !important;
-        }
+            &.arrow {
+                &::before {
+                    border-left-color: @background-color-card !important;
+                }
+                &::after {
+                    border-left-color: @background-color-ui-subtle !important;
+                }
+            }
 
-        li.arrow::after {
-            border-left-color: @background-color-ui-subtle !important;
-        }
+            &.head {
+                background-color: @background-color-progressive-subtle !important;
+                color: @color-link !important;
 
-        li.head {
-            background-color: @background-color-progressive-subtle !important;
-            color: @color-link !important;
-        }
-
-        li.head.arrow::after {
-            border-left-color: @background-color-progressive-subtle !important;
+                &.arrow::after {
+                    border-left-color: @background-color-progressive-subtle !important;
+                }
+            }
         }
     }
 
