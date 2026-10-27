@@ -96,14 +96,6 @@ div.thumbinner {
 #mw-indicator-mw-helplink {
     display: none;
 }
-.catlinks select {
-    font-size: 1rem;
-    padding: 4px;
-    line-height: 1.4;
-    color: @color-base;
-    background: @background-color-card;
-    border: 1px solid @border-color-base;
-}
 .catlinks {
     box-shadow: 4px 3px 7px 3px var(--catlinks-shadow);
     border: solid var(--catlinks-border);
@@ -116,6 +108,15 @@ div.thumbinner {
     margin-right: 23px;
     overflow: visible;
     word-wrap: break-word;
+
+    select {
+        font-size: 1rem;
+        padding: 4px;
+        line-height: 1.4;
+        color: @color-base;
+        background: @background-color-card;
+        border: 1px solid @border-color-base;
+    }
 
     @media (max-width: @max-width-breakpoint-tablet) {
         margin-right: 0;
@@ -227,33 +228,36 @@ table.prettytable {
 
 /* Responsive MediaWiki Galleries & Thumbnails - 500px */
 @media (max-width: 500px) {
-    /* Galleries */
-    .mw-body li.gallerybox {
-        width: 100% !important;
-    }
-    .mw-body li.gallerybox .thumb {
-        width: unset !important;
-        height: unset !important;
-    }
-    /* Thumbnails */
-    .mw-body .thumb,
-    .mw-body .thumbimage,
-    .mw-body figure[typeof~="mw:File"],
-    .mw-body figure[typeof~="mw:File/Thumb"],
-    .mw-body figure[typeof~="mw:File/Frame"] {
-        float: none !important; /* Make images take 100% of screen on small displays */
-        margin: 0 auto !important;
-    }
-    .mw-body .thumb img,
-    .mw-body .thumbimage img,
-    .mw-body .gallerybox .thumb img.mw-file-element,
-    .mw-body figure[typeof~="mw:File"] > :not(figcaption) img.mw-file-element,
-    .mw-body figure[typeof~="mw:File/Thumb"] > :not(figcaption) img.mw-file-element,
-    .mw-body figure[typeof~="mw:File/Frame"] > :not(figcaption) img.mw-file-element { /* allows image thumbs to respond at small widths */
-        width: unset !important;
-        height: unset !important;
-        max-width: 97%; /* allows the image to fit inside the thumb border */
-        margin: 1.5%;
+    .mw-body {
+        /* Galleries */
+        li.gallerybox {
+            width: 100% !important;
+
+            .thumb {
+                width: unset !important;
+                height: unset !important;
+            }
+        }
+        /* Thumbnails */
+        .thumb,
+        .thumbimage,
+        figure[typeof~="mw:File"],
+        figure[typeof~="mw:File/Thumb"],
+        figure[typeof~="mw:File/Frame"] {
+            float: none !important; /* Make images take 100% of screen on small displays */
+            margin: 0 auto !important;
+        }
+        .thumb img,
+        .thumbimage img,
+        .gallerybox .thumb img.mw-file-element,
+        figure[typeof~="mw:File"] > :not(figcaption) img.mw-file-element,
+        figure[typeof~="mw:File/Thumb"] > :not(figcaption) img.mw-file-element,
+        figure[typeof~="mw:File/Frame"] > :not(figcaption) img.mw-file-element { /* allows image thumbs to respond at small widths */
+            width: unset !important;
+            height: unset !important;
+            max-width: 97%; /* allows the image to fit inside the thumb border */
+            margin: 1.5%;
+        }
     }
 }
 
@@ -968,42 +972,6 @@ html.ridvan-dark-mode {
             color: @color-gutter-text !important;
             font-style: italic;
         }
-    }
-
-    /* Syntax Highlighting (View Mode / .mw-highlight) */
-    .mw-highlight {
-        background-color: @background-color-editor !important;
-        color: @color-editor-text !important;
-        border: 1px solid @border-color-ui-widget !important;
-        padding: 1em;
-
-        pre {
-            background-color: transparent !important;
-            border: none !important;
-            color: inherit !important;
-            font-family: monospace;
-        }
-
-        /* Keywords (Gold) */
-        .k, .kd, .kp, .kr, .kt { color: #cc7832 !important; font-weight: bold; }
-        /* Strings (Green) */
-        .s, .s1, .s2, .se, .si { color: #6a8759 !important; }
-        /* Comments (Gray Italic) */
-        .c, .c1, .cm, .cs { color: @color-gutter-text !important; font-style: italic; }
-        /* Numbers (Blue) */
-        .m, .mi, .mf { color: #6897bb !important; }
-        /* Names, Identifiers & Operators */
-        .n, .na, .nb, .nn, .nv, .o, .ow { color: @color-editor-text !important; }
-        /* Class Names (Teal) */
-        .nc { color: #4ec9b0 !important; }
-        /* Function Names (Yellow) */
-        .nf { color: #dcdcaa !important; }
-    }
-
-    /* Remove light-mode box-shadow gutter in view mode */
-    .mw-content-ltr.mw-highlight-lines pre,
-    .mw-content-ltr.content .mw-highlight-lines pre {
-        box-shadow: unset !important;
     }
 
     /* Syntax Highlighting (View Mode / .mw-highlight) */
