@@ -7,6 +7,7 @@ class SkinRidvan extends SkinMustache {
 		$config = $this->getConfig();
 
 		if ( $config->get( 'SearchSuggestionsReplacement' ) ) {
+			unset( $modules['search'] );
 			$modules['scripts'][] = 'skins.ridvan.search';
 		}
 
