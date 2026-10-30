@@ -1462,9 +1462,16 @@ html.ridvan-dark-mode {
         }
     }
 
-    .wikibase-sitelinkgroupview.wb-edit .wikibase-sitelinkgroupview-heading-container {
+    .wikibase-sitelinkgroupview.wb-edit .wikibase-sitelinkgroupview-heading-container,
+    .wikibase-entitytermsforlanguagelistview.wb-edit .wikibase-entitytermsforlanguagelistview-header .wikibase-entitytermsforlanguagelistview-header-row .wikibase-entitytermsforlanguagelistview-cell {
         background-color: @background-color-progressive-subtle !important;
         color: @color-base !important;
+    }
+
+	.tipsy-inner {
+        background-color: @background-color-dropdown !important;
+        color: @color-dropdown-text !important;
+        border-color: @border-color-dropdown !important;
     }
 
     .wikibase-entityview input {
