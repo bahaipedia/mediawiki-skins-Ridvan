@@ -1443,13 +1443,25 @@ html.ridvan-dark-mode {
         background: @background-color-hover !important;
     }
 
-    /* Extension:Wikibase */
-    .wikibase-referenceview.wb-edit > .wikibase-referenceview-heading {
-        background-color: @background-color-interactive-selected !important;
-        color: @color-text-main !important;
+	/* Extension:Wikibase */
+    .wikibase-referenceview {
+        background: @background-color-ui-subtle !important;
+
+        &-heading {
+            background-color: @background-color-editor-bar !important;
+        }
+
+        &.wb-edit {
+            background-color: @background-color-progressive-subtle !important;
+            color: @color-base !important;
+
+            > .wikibase-referenceview-heading {
+                background-color: @background-color-interactive-selected !important;
+                color: @color-text-main !important;
+            }
+        }
     }
 
-    .wikibase-referenceview.wb-edit,
     .wikibase-sitelinkgroupview.wb-edit .wikibase-sitelinkgroupview-heading-container {
         background-color: @background-color-progressive-subtle !important;
         color: @color-base !important;
@@ -1461,7 +1473,13 @@ html.ridvan-dark-mode {
         border-color: @border-color-input !important;
     }
 
-	.ui-entityselector-list {
+    .wb-propertypage .wikibase-propertyview-datatype {
+        background-color: @background-color-ui-subtle !important;
+        border-color: @border-color-base !important;
+        color: @color-base !important;
+    }
+
+    .ui-entityselector-list {
         .ui-entityselector-notfound,
         .ui-entityselector-error {
             background-color: @background-color-error-subtle !important;
@@ -1472,14 +1490,6 @@ html.ridvan-dark-mode {
             background-color: @background-color-progressive-subtle !important;
             border-top-color: @border-color-dropdown !important;
             color: @color-link !important;
-        }
-    }
-
-    .wikibase-referenceview {
-        background: @background-color-ui-subtle !important;
-
-        .wikibase-referenceview-heading {
-            background-color: @background-color-editor-bar !important;
         }
     }
 
